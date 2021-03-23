@@ -1,21 +1,8 @@
-import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
-import {AppNavigator} from "./src/components/navigator/AppNavigator";
+import React, { Component } from 'react';
+import { AppTabNavigator } from './src/components/navigator/AppTabNavigator';
 
 export default class App extends Component {
-    constructor(props: {}) {
-        super(props);
-    }
-
     render() {
-        return (
-            <AppNavigator/>
-        )
+        return <AppTabNavigator />;
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-});
