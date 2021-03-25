@@ -1,67 +1,65 @@
-import React, { Component } from 'react';
-import { StatusBar, StyleSheet, Text, View } from 'react-native';
-import { fetchProducts } from '../services/fetchProducts';
+import React, { Component } from "react";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { fetchProducts } from "../services/fetchProducts";
+import Logo from "../components/logo";
+import { ItemList } from "../components/ItemList";
 
 type HomeState = {
-    data: [];
+  data: [];
 };
 
 export default class Home extends Component<{}, HomeState> {
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            data: []
-        };
-    }
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      data: []
+    };
+  }
 
-    componentDidMount() {
-        fetchProducts().then((response) => {
-            this.setState({
-                data: response
-            });
-        });
-    }
+  componentDidMount() {
+    fetchProducts().then((response) => {
+      this.setState({
+        data: response
+      });
+    });
+  }
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <View style={styles.header}>
-                    <Text>Header.</Text>
-                </View>
-                <View style={styles.body}>
-                    <Text>Body</Text>
-                </View>
-            </View>
-        );
-        // if (this.state.data.length > 0) {
-        //     return (
-        //         <View style={styles.container}>
-        //             <ItemList data={this.state.data}/>
-        //             <Text>sdf</Text>
-        //             <StatusBar style="auto" backgroundColor="#61dafb"/>
-        //         </View>
-        //     )
-        // } else {
-        //     return (
-        //         <View style={styles.container}>
-        //             <Text>Loading</Text>
-        //             <StatusBar style="auto" backgroundColor="#61dafb"/>
-        //         </View>
-        //     )
-        // }
+  render() {
+    if (this.state.data.length > 0) {
+      return (
+        <View style={styles.container}>
+          <StatusBar backgroundColor="#61dafb" hidden={false}/>
+          <View style={styles.header}>
+            <Logo />
+          </View>
+          <View style={styles.body}>
+            <ItemList data={this.state.data} />
+          </View>
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <Text>Loading</Text>
+        </View>
+      );
     }
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: StatusBar.currentHeight
-    },
-    header: {
-        flex: 1,
-        backgroundColor: 'pink'
-    },
-    body: {
-        flex: 9
-    }
+  container: {
+    flex: 1
+  },
+  header: {
+    flex: 1,
+    backgroundColor: "#fff"
+  },
+  body: {
+    flex: 9,
+    backgroundColor: "#fff"
+  },
+  statusbar: {
+    backgroundColor: "#61dafb"
+  }
 });
