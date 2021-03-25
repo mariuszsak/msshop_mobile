@@ -12,13 +12,17 @@ export const AppTabNavigator = () => (
             tabBarOptions={{
                 activeTintColor: 'orange',
                 inactiveTintColor: 'blue',
-                activeBackgroundColor: 'red',
+                activeBackgroundColor: '#fff',
                 labelStyle: {
                     fontSize: 16
-                }
+                },
+              tabStyle: {
+                  borderColor: 'navy',
+                borderTopWidth: 1
+              }
             }}
         >
-            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Home" component={Home} options={{}}/>
             <Tab.Screen name="About" component={About} />
         </Tab.Navigator>
     </NavigationContainer>
