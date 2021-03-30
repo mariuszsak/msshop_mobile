@@ -1,9 +1,20 @@
 import * as React from "react";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import ProductDetail from "../screens/productDetail";
+
+type Props = {
+  onPress(): void
+}
 
 export function ItemList(props: any) {
-  // console.log(props.data);
-  console.log("ok");
+
+  function goDetail(item: Props) {
+    const { navigate } = props.navigation;
+    console.log(item);
+    navigate("ProductDetail",
+      item
+    );
+  }
 
   return (
     <View style={{ flex: 1, width: "100%" }}>
@@ -12,7 +23,7 @@ export function ItemList(props: any) {
         data={props.data}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <View style={styles.singleItem}>
+          <TouchableOpacity style={styles.singleItem} onPress={()=>goDetail(item)}>
             <View style={styles.left}>
               <Image
                 resizeMode="center"
@@ -29,7 +40,7 @@ export function ItemList(props: any) {
                   <Text style={styles.price}> {item.price}</Text></Text>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>
@@ -75,5 +86,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20
   }
-
 });
