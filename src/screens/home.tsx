@@ -8,8 +8,12 @@ type HomeState = {
   data: [];
 };
 
-export default class Home extends Component<{}, HomeState> {
-  constructor(props: {}) {
+interface Props {
+  navigation: any
+}
+
+export default class Home extends Component<Props, HomeState> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       data: []
@@ -33,7 +37,7 @@ export default class Home extends Component<{}, HomeState> {
             <Logo />
           </View>
           <View style={styles.body}>
-            <ItemList data={this.state.data} />
+            <ItemList data={this.state.data} navigation={this.props.navigation} />
           </View>
         </View>
       );
