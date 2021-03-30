@@ -7,8 +7,20 @@ const HomeStack = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Home' component={Home} options={{ headerShown: false }}/>
-      <Stack.Screen name='ProductDetail' component={ProductDetail}/>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false
+        }}
+      />
+      <Stack.Screen
+        name="ProductDetail"
+        component={ProductDetail}
+        options={{
+          title: "Details:"
+        }}
+      />
     </Stack.Navigator>
   );
 };
