@@ -31,7 +31,7 @@ const AppTabNavigator = () => (
         }}
       />
       <Tab.Screen
-        name="Bakset"
+        name="Basket"
         component={Basket}
         options={{
           tabBarLabel: "Basket",
