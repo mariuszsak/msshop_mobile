@@ -1,40 +1,43 @@
 import React, { createContext } from "react";
 
-type Item = {
-  value: number
+type MyItem = {
+  name: string,
+  price: number
 }
 
-type ContextProps = {
-  items: Item[]
+export type ContextProps = {
+  items: MyItem[]
 }
 
-const ContextDefaultValue: ContextProps = {
+export const ContextDefaultValue: ContextProps = {
+  items: [
+    {
+      name: "test1",
+      price: 100
+    },
+    {
+      name: "test2",
+      price: 100
+    }
+  ]
+};
 
-}
+export const AppContext = createContext<ContextProps>(ContextDefaultValue);
 
-export const AppContext = createContext<ContextProps>({
-  items: []
-});
-
-//
 export class ItemProvider extends React.Component {
   updateItem = (newItem: any) => {
-    this.setState({ item: newItem })
-  }
+    this.setState({ items: newItem });
+  };
 
   state = {
     items: []
-  }
-
+  };
 
   render() {
     return (
       <AppContext.Provider value={this.state}>
-         {this.props.children}
-         </AppContext.Provider>
-     );
-   }
+        {this.props.children}
+      </AppContext.Provider>
+    );
+  }
 }
-//
-//
-// export const ItemConsumer = Context.Consumer;
