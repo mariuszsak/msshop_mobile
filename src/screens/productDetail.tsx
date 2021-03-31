@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, Button } from "react-native";
 import React from "react";
 
 export default function ProductDetail({ route }: any) {
@@ -20,7 +20,6 @@ export default function ProductDetail({ route }: any) {
       <Text>{route.params.description.replace(/\"/g, "")}</Text>
       <Text>{route.params.price.replace(/\"/g, "")}</Text>
       <Text>{route.params.brand.name.replace(/\"/g, "")}</Text>
-      <Text></Text>
     </View>
   );
 }
