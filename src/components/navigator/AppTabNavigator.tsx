@@ -4,6 +4,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import About from "../../screens/about";
 import HomeStack from "./homeStack";
 import Icon from "react-native-vector-icons/Ionicons";
+import Basket from "../../screens/basket";
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -26,6 +27,17 @@ const AppTabNavigator = () => (
           tabBarColor: "#930091",
           tabBarIcon: ({ color }) => (
             <Icon name="md-home-outline" size={26} color={color} />
+          )
+        }}
+      />
+      <Tab.Screen
+        name="Bakset"
+        component={Basket}
+        options={{
+          tabBarLabel: "Basket",
+          tabBarColor: "#930091",
+          tabBarIcon: ({ color }) => (
+            <Icon name="md-basket-outline" size={26} color={color} />
           )
         }}
       />
