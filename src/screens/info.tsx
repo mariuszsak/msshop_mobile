@@ -2,14 +2,14 @@ import { View, Text, StyleSheet, StatusBar } from "react-native";
 import React from "react";
 import Logo from "../components/logo";
 
-export default function About() {
+export default function Info() {
   return (
     <View style={styles.container}>
       <View>
         <Logo />
       </View>
       <View style={styles.body}>
-        <Text>About</Text>
+        <Text>Info</Text>
       </View>
     </View>
   );
