@@ -1,11 +1,33 @@
-import { View, Text, StyleSheet, StatusBar } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useContext } from "react";
 import Logo from "../components/logo";
-import { CheckBox, Divider } from "react-native-elements";
+import { AppContext } from "../context";
+import { Button, Checkbox } from "react-native-paper";
 
 export default function Filter() {
 
+  const context = useContext(AppContext);
+
+  const initialContext = context;
+  // const filteredContextSun = context.items.filter(items => items.type == "SUNGLASSES");
+  // const filteredContextEye = ;
+
   const iconSize: number = 14;
+
+
+  function showAll() {
+    console.log(initialContext);
+  }
+
+  function showFilteredByType(type: string) {
+    console.log(context.items.filter(items => items.type == type));
+  }
+
+  function applyFiltersHandler() {
+    console.log("click");
+  }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -13,68 +35,84 @@ export default function Filter() {
       </View>
       <View style={styles.body}>
         <Text>Show glasses by type:</Text>
-        <View style={styles.checkboxes}>
-          <CheckBox
-            title="Show all"
-            size={iconSize}
-            checked={true}
 
-          />
-          <CheckBox
-            title="Eyeglasses"
-            size={iconSize}
-            checked={true}
-          />
-          <CheckBox
-            title="Sunglasses"
-            size={iconSize}
-            checked={true}
-          />
+        <View style={styles.checkboxes}>
+          <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+
+            <Checkbox.Item label="Show all"
+                           status="checked"
+                           labelStyle={styles.checkboxLabel}
+            />
+          </TouchableOpacity>
+
+
+          <TouchableOpacity style={styles.bor}
+                            onPress={() => showFilteredByType("EYEGLASSES")}>
+            <Checkbox.Item label="Eyeglasses"
+                           status="checked"
+                           labelStyle={styles.checkboxLabel}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bor}
+                            onPress={() => showFilteredByType("SUNGLASSES")}>
+            <Checkbox.Item label="Sunglasses"
+                           status="checked"
+                           labelStyle={styles.checkboxLabel}
+            />
+          </TouchableOpacity>
         </View>
+
+
         <Text>Show glasses by gender:</Text>
         <View style={styles.checkboxes}>
-          <CheckBox
-            title="Unisex"
-            size={iconSize}
-            checked={true}
-          />
-          <CheckBox
-            title="Male"
-            size={iconSize}
-            checked={true}
-          />
-          <CheckBox
-            title="Female"
-            size={iconSize}
-            checked={true}
-          />
+          <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+            <Checkbox.Item label="Unisex"
+                           status="checked"
+                           labelStyle={styles.checkboxLabel}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+            <Checkbox.Item label="Male"
+                           status="checked"
+                           labelStyle={styles.checkboxLabel}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+            <Checkbox.Item label="Female"
+                           status="checked"
+                           labelStyle={styles.checkboxLabel}
+            />
+          </TouchableOpacity>
+
         </View>
         <Text>Show glasses by brand:</Text>
-        <CheckBox
-          title="Show all"
-          size={iconSize}
-          checked={true}
-        />
-        <CheckBox
-          title="Hugo Boss"
-          size={iconSize}
-          checked={true}
-        />
-        <CheckBox
-          title="Polaroid"
-          size={iconSize}
-          checked={true}
-        />
-        <CheckBox
-          title="Tom Ford"
-          size={iconSize}
-          checked={true}
-        />
-        <CheckBox
-          title="Ray-Ban"
-          size={iconSize}
-          checked={true}
-        />
+        <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+          <Checkbox.Item label="Hugo Boss"
+                         status="checked"
+                         labelStyle={styles.checkboxLabel}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+          <Checkbox.Item label="Polaroid"
+                         status="checked"
+                         labelStyle={styles.checkboxLabel}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+          <Checkbox.Item label="Tom Ford"
+                         status="checked"
+                         labelStyle={styles.checkboxLabel}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+          <Checkbox.Item label="Ray-Ban"
+                         status="checked"
+                         labelStyle={styles.checkboxLabel}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.btn}>
+        <Button mode="contained" onPress={applyFiltersHandler}>Apply filters</Button>
       </View>
     </View>
   );
@@ -95,8 +133,26 @@ const styles = StyleSheet.create({
     },
     checkboxes: {
       flexDirection: "row",
-      paddingBottom:20,
-      justifyContent: "center"
+      justifyContent: "space-around",
+      alignItems: "flex-end"
+    },
+    option: {
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderColor: "black"
+    },
+    bor: {
+      flex: 1,
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderColor: "black"
+    },
+    btn: {
+      padding: 5,
+      backgroundColor: "#fff"
+    },
+    checkboxLabel: {
+      fontSize: 12
     }
   }
 );
