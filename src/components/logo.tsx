@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, StatusBar, StyleSheet } from "react-native";
+import { Image } from "react-native";
+import styles from "../styles/style";
 
 const Logo = () => {
   return (
@@ -9,14 +10,5 @@ const Logo = () => {
     />
   );
 };
-
-
-const styles = StyleSheet.create({
-  logo: {
-    flex:1,
-    width: "100%",
-    resizeMode: "contain"
-  }
-});
 
 export default Logo;
