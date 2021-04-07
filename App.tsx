@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AppTabNavigator from "./src/components/navigator/AppTabNavigator";
 import { AppContext, ContextDefaultValue } from "./src/context";
-import { fetchProducts } from "./src/services/fetchProducts";
+import { fetchData } from "./src/services/fetchData";
 
 type AppState = {
   items: [];
@@ -20,7 +20,7 @@ export default class App extends Component<Props, AppState> {
   }
 
   componentDidMount() {
-    fetchProducts().then((response) => {
+    fetchData('products').then((response) => {
       this.setState({
         items: response
       });

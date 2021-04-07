@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StatusBar, StyleSheet, Text, View } from "react-native";
-import { fetchProducts } from "../services/fetchProducts";
+import { fetchData } from "../services/fetchData";
 import Logo from "../components/logo";
 import { ItemList } from "../components/ItemList";
 
@@ -21,7 +21,7 @@ export default class Home extends Component<Props, HomeState> {
   }
 
   componentDidMount() {
-    fetchProducts().then((response) => {
+    fetchData('products').then((response) => {
       this.setState({
         data: response
       });
