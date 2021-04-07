@@ -4,7 +4,7 @@ import Logo from "../components/logo";
 import { AppContext } from "../context";
 import { Button, Checkbox } from "react-native-paper";
 import CheckB from "../components/CheckBox";
-import styless from "../styles/style";
+import { fetchData } from "../services/fetchData";
 
 export default function Filter() {
 
@@ -13,22 +13,27 @@ export default function Filter() {
   let unique: any = [];
   const d = context.items.map(items => items.type);
   unique = d.filter((v, i, a) => a.indexOf(v) === i);
-  unique.unshift('All items');
+  unique.unshift("All items");
 
 
-  const [types, setTypes] = useState([])
+  const [types, setTypes] = useState([]);
 
-  useEffect(()=>{
-    setTypes(unique);
-    console.log(types);
-  },[])
+  useEffect(() => {
+    fetchData("types").then(response => {
+      console.log('response: '+JSON.stringify(response));
+      // if (response.length > 0) {
+        setTypes(response[0].glasstype);
+      // }
+    });
+  }, []);
 
+  console.log('types: '+JSON.stringify(types));
+  // console.log(types[0].glasstype);
 
   const initialContext = context;
   // const filteredContextSun = context.items.filter(items => items.type == "SUNGLASSES");
   // const filteredContextEye = ;
 
-  const iconSize: number = 14;
 
   const array = [
     {
@@ -51,20 +56,24 @@ export default function Filter() {
     }
   ];
 
-  const [checked, setChecked] = useState(array);
+  // const array = [
+  //   {
+  //     name: "A"
+  //   },
+  //   {
+  //     name: "B"
+  //   },
+  //   {
+  //     name: "C"
+  //   }
+  // ];
 
-  function showAll() {
-    console.log(initialContext);
-  }
 
-  function showFilteredByType(type: string) {
-    console.log(context.items.filter(items => items.type == type));
-  }
+  const [checked, setChecked] = useState(types);
 
   function applyFiltersHandler() {
-    console.log("click");
+    console.log("Apply clicked");
   }
-
 
 
   function handleClick(index: number) {
@@ -129,19 +138,22 @@ export default function Filter() {
         {/*GENDER*/}
         <Text>Show glasses by gender:</Text>
         <View style={styles.checkboxes}>
-          <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+          <TouchableOpacity onPress={() => {
+          }} style={styles.bor}>
             <Checkbox.Item label="Unisex"
                            status="checked"
                            labelStyle={styles.checkboxLabel}
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+          <TouchableOpacity onPress={() => {
+          }} style={styles.bor}>
             <Checkbox.Item label="Male"
                            status="unchecked"
                            labelStyle={styles.checkboxLabel}
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+          <TouchableOpacity onPress={() => {
+          }} style={styles.bor}>
             <Checkbox.Item label="Female"
                            status="unchecked"
                            labelStyle={styles.checkboxLabel}
@@ -152,31 +164,36 @@ export default function Filter() {
 
         {/*BRAND*/}
         <Text>Show glasses by brand:</Text>
-        <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+        <TouchableOpacity onPress={() => {
+        }} style={styles.bor}>
           <Checkbox.Item label="Show all"
                          status="checked"
                          labelStyle={styles.checkboxLabel}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+        <TouchableOpacity onPress={() => {
+        }} style={styles.bor}>
           <Checkbox.Item label="Hugo Boss"
                          status="unchecked"
                          labelStyle={styles.checkboxLabel}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+        <TouchableOpacity onPress={() => {
+        }} style={styles.bor}>
           <Checkbox.Item label="Polaroid"
                          status="unchecked"
                          labelStyle={styles.checkboxLabel}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+        <TouchableOpacity onPress={() => {
+        }} style={styles.bor}>
           <Checkbox.Item label="Tom Ford"
                          status="unchecked"
                          labelStyle={styles.checkboxLabel}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => showAll()} style={styles.bor}>
+        <TouchableOpacity onPress={() => {
+        }} style={styles.bor}>
           <Checkbox.Item label="Ray-Ban"
                          status="unchecked"
                          labelStyle={styles.checkboxLabel}
