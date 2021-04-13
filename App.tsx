@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import AppTabNavigator from "./src/components/navigator/AppTabNavigator";
-import { AppContext, ContextDefaultValue } from "./src/context";
+import { AppContextProvider } from "./src/context";
 import { fetchData } from "./src/services/fetchData";
 
-type AppState = {
+interface AppState {
   items: [];
 };
 
@@ -25,14 +25,13 @@ export default class App extends Component<Props, AppState> {
         items: response
       });
     });
-
   }
 
   render() {
     return (
-      <AppContext.Provider value={this.state}>
+      <AppContextProvider value={this.state}>
         <AppTabNavigator />
-      </AppContext.Provider>
+      </AppContextProvider>
     );
   }
 }
