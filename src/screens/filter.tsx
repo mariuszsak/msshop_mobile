@@ -6,86 +6,73 @@ import { Button, Checkbox } from "react-native-paper";
 import CheckB from "../components/CheckBox";
 import { fetchData } from "../services/fetchData";
 
+interface FilterInterface {
+  glasstype: string;
+  checked: boolean
+}
+
 export default function Filter() {
 
   const context = useContext(AppContext);
 
-  let unique: any = [];
-  const d = context.items.map(items => items.type);
-  unique = d.filter((v, i, a) => a.indexOf(v) === i);
-  unique.unshift("All items");
-
-
-  const [types, setTypes] = useState([]);
+  const [types, setTypes] = useState<FilterInterface[]>(
+    []
+  );
 
   useEffect(() => {
-    fetchData("types").then(response => {
-      console.log('response: '+JSON.stringify(response));
-      // if (response.length > 0) {
-        setTypes(response[0].glasstype);
-      // }
-    });
+    const makeTypes: () => Promise<void> = async () => {
+      await fetchData("types").then(d => {
+        console.log(d[0].glasstype);
+        let temp: string[] = d[0].glasstype;
+        let x: string[] = uns(temp);
+        // temp.unshift("All types");
+        console.log("x....");
+        console.log(x);
+        console.log("....x");
+        let val: FilterInterface[] = addCheckedOption(x);
+
+
+        console.log(val);
+        let firstTrue: FilterInterface[] = val;
+        firstTrue[0].checked = true;
+        console.log(firstTrue);
+        setTypes(firstTrue);
+      });
+    };
+
+    makeTypes().then();
+
+    console.log("Types: " + types);
   }, []);
 
-  console.log('types: '+JSON.stringify(types));
-  // console.log(types[0].glasstype);
+  function uns(array: string[]): string[] {
+    array.unshift("All items");
+    return array;
+  }
 
-  const initialContext = context;
-  // const filteredContextSun = context.items.filter(items => items.type == "SUNGLASSES");
-  // const filteredContextEye = ;
-
-
-  const array = [
-    {
-      name: "checkbox1",
-      key: "checkbox1",
-      label: "Show all",
-      checked: true
-    },
-    {
-      name: "checkbox2",
-      key: "checkbox2",
-      label: "Eyeglasses",
-      checked: false
-    },
-    {
-      name: "checkbox3",
-      key: "checkbox3",
-      label: "Sunglasses",
-      checked: false
+  function addCheckedOption(array: any[]) {
+    let tempArrObj: { glasstype: string, checked: boolean }[] = [];
+    for (let i: number = 0; i < array.length; i++) {
+      tempArrObj.push({
+        "glasstype": array[i],
+        "checked": false
+      });
     }
-  ];
+    return tempArrObj;
+  }
 
-  // const array = [
-  //   {
-  //     name: "A"
-  //   },
-  //   {
-  //     name: "B"
-  //   },
-  //   {
-  //     name: "C"
-  //   }
-  // ];
-
-
-  const [checked, setChecked] = useState(types);
-
-  function applyFiltersHandler() {
+  function applyFiltersHandler(): void {
     console.log("Apply clicked");
   }
 
-
-  function handleClick(index: number) {
-    let newArr = [...checked];
+  function handleClick(index: number): void {
+    let newArr: FilterInterface[] = [...types];
     newArr.map((newArrItem, newArrIndex) => {
       newArrIndex == index
         ? newArrItem.checked = true : newArrItem.checked = false;
     });
-    setChecked(newArr);
-
-    // console.log(unique[index]);
-
+    setTypes(newArr);
+    console.log(newArr);
   }
 
   return (
@@ -101,9 +88,10 @@ export default function Filter() {
         <Text>Show glasses by type:</Text>
 
         <View style={styles.checkboxes}>
-          {checked.map((c, index) => (
-            <TouchableOpacity key={c.name} onPress={() => handleClick(index)} style={styles.bor}>
-              <CheckB label={types[index]}
+
+          {types.map((c: FilterInterface, index: number) => (
+            <TouchableOpacity key={c.glasstype} onPress={() => handleClick(index)} style={styles.bor}>
+              <CheckB label={c.glasstype}
                       status={c.checked ? "checked" : "unchecked"}
               />
             </TouchableOpacity>
