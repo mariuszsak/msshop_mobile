@@ -1,55 +1,39 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import { StatusBar, StyleSheet, Text, View } from "react-native";
-import { fetchData } from "../services/fetchData";
 import Logo from "../components/logo";
 import { ItemList } from "../components/ItemList";
+import { AppContext, MyItem } from "../context";
 
-type HomeState = {
-  data: [];
-};
 
 interface Props {
   navigation: any
 }
 
-export default class Home extends Component<Props, HomeState> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      data: []
-    };
-  }
+export default function Home(props: Props) {
 
-  componentDidMount() {
-    fetchData('products').then((response) => {
-      this.setState({
-        data: response
-      });
-    });
-  }
+  const data = useContext(AppContext);
 
-  render() {
-    if (this.state.data.length > 0) {
-      return (
-        <View style={styles.container}>
-          <StatusBar backgroundColor="#61dafb" hidden={false}/>
-          <View style={styles.header}>
-            <Logo />
-          </View>
-          <View style={styles.body}>
-            <ItemList data={this.state.data} navigation={this.props.navigation} />
-          </View>
+  if (data.items.length > 0) {
+    return (
+      <View style={styles.container}>
+        <StatusBar backgroundColor="#61dafb" hidden={false} />
+        <View style={styles.header}>
+          <Logo />
         </View>
-      );
-    } else {
-      return (
-        <View style={styles.container}>
-          <Text>Loading</Text>
+        <View style={styles.body}>
+          <ItemList data={data.items} navigation={props.navigation} />
         </View>
-      );
-    }
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <Text>Loading</Text>
+      </View>
+    );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -67,3 +51,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#61dafb"
   }
 });
+
