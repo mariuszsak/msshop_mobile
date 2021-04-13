@@ -1,11 +1,11 @@
 import React, { createContext } from "react";
 
-type Brand = {
+interface Brand {
   id: number,
   name: string
 }
 
-type MyItem = {
+export interface MyItem {
   id: number,
   name: string,
   type: string,
@@ -16,7 +16,7 @@ type MyItem = {
   brand: Brand
 }
 
-export type ContextProps = {
+interface ContextProps {
   items: MyItem[]
 }
 
@@ -52,21 +52,5 @@ export const ContextDefaultValue: ContextProps = {
 };
 
 export const AppContext = createContext<ContextProps>(ContextDefaultValue);
-//
-// export class ItemProvider extends React.Component {
-//   updateItem = (newItem: any) => {
-//     this.setState({ items: newItem });
-//   };
-//
-//   state = {
-//     items: []
-//   };
-//
-//   render() {
-//     return (
-//       <AppContext.Provider value={this.state}>
-//         {this.props.children}
-//       </AppContext.Provider>
-//     );
-//   }
-// }
+export const AppContextProvider = AppContext.Provider;
+export const AppContextConsumer = AppContext.Consumer;
