@@ -2,7 +2,7 @@ import React from "react";
 import { Checkbox } from "react-native-paper";
 import styles from "../styles/style";
 
-const CheckB = (props: any) => {
+const CheckBox = (props: any) => {
   return (
     <Checkbox.Item
       {...props}
@@ -11,4 +11,4 @@ const CheckB = (props: any) => {
   );
 };
 
-export default CheckB;
+export default CheckBox;
