@@ -20,6 +20,10 @@ interface ContextProps {
   items: MyItem[]
 }
 
+export const EmptyContextDefaultValue: ContextProps = {
+  items: []
+}
+
 export const ContextDefaultValue: ContextProps = {
   items: [
     {
@@ -51,6 +55,6 @@ export const ContextDefaultValue: ContextProps = {
   ]
 };
 
-export const AppContext = createContext<ContextProps>(ContextDefaultValue);
+export const AppContext = createContext<ContextProps>(EmptyContextDefaultValue);
 export const AppContextProvider = AppContext.Provider;
 export const AppContextConsumer = AppContext.Consumer;
