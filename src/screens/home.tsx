@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { StatusBar, StyleSheet, Text, View } from "react-native";
 import Logo from "../components/logo";
 import { ItemList } from "../components/ItemList";
-import { AppContext, MyItem } from "../context";
+import { AppContext } from "../context";
 
 
 interface Props {
-  navigation: any
+  navigation: any;
 }
 
 export default function Home(props: Props) {
