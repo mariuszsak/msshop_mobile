@@ -3,17 +3,18 @@ import React, { useContext, useEffect, useState } from "react";
 import Logo from "../components/logo";
 import { AppContext } from "../context";
 import { Button, Checkbox } from "react-native-paper";
-import CheckB from "../components/CheckBox";
+import CheckBox from "../components/CheckBox";
 import { fetchData } from "../services/fetchData";
 
 interface FilterInterface {
-  glasstype: string;
-  checked: boolean
+  glassType: string;
+  isChecked: boolean;
 }
 
 export default function Filter() {
 
-  const context = useContext(AppContext);
+  //?
+  // const context = useContext(AppContext);
 
   const [types, setTypes] = useState<FilterInterface[]>(
     []
@@ -34,7 +35,7 @@ export default function Filter() {
 
         console.log(val);
         let firstTrue: FilterInterface[] = val;
-        firstTrue[0].checked = true;
+        firstTrue[0].isChecked = true;
         console.log(firstTrue);
         setTypes(firstTrue);
       });
@@ -51,11 +52,11 @@ export default function Filter() {
   }
 
   function addCheckedOption(array: any[]) {
-    let tempArrObj: { glasstype: string, checked: boolean }[] = [];
+    let tempArrObj: { glassType: string, isChecked: boolean }[] = [];
     for (let i: number = 0; i < array.length; i++) {
       tempArrObj.push({
-        "glasstype": array[i],
-        "checked": false
+        "glassType": array[i],
+        "isChecked": false
       });
     }
     return tempArrObj;
@@ -69,7 +70,7 @@ export default function Filter() {
     let newArr: FilterInterface[] = [...types];
     newArr.map((newArrItem, newArrIndex) => {
       newArrIndex == index
-        ? newArrItem.checked = true : newArrItem.checked = false;
+        ? newArrItem.isChecked = true : newArrItem.isChecked = false;
     });
     setTypes(newArr);
     console.log(newArr);
@@ -90,9 +91,9 @@ export default function Filter() {
         <View style={styles.checkboxes}>
 
           {types.map((c: FilterInterface, index: number) => (
-            <TouchableOpacity key={c.glasstype} onPress={() => handleClick(index)} style={styles.bor}>
-              <CheckB label={c.glasstype}
-                      status={c.checked ? "checked" : "unchecked"}
+            <TouchableOpacity key={c.glassType} onPress={() => handleClick(index)} style={styles.bor}>
+              <CheckBox label={c.glassType}
+                        status={c.isChecked ? "checked" : "unchecked"}
               />
             </TouchableOpacity>
           ))}
