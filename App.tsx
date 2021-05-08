@@ -5,7 +5,7 @@ import { fetchData } from "./src/services/fetchData";
 
 interface AppState {
   items: [];
-};
+}
 
 interface Props {
   navigation: any
@@ -20,7 +20,7 @@ export default class App extends Component<Props, AppState> {
   }
 
   componentDidMount() {
-    fetchData('products').then((response) => {
+    fetchData("products").then((response) => {
       this.setState({
         items: response
       });
