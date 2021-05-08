@@ -8,8 +8,8 @@ interface Brand {
 export interface MyItem {
   id: number,
   name: string,
-  type: string,
-  gender: string,
+  typeId: number,
+  genderId: number,
   description: string,
   price: number,
   brandId: number,
@@ -29,8 +29,8 @@ export const ContextDefaultValue: ContextProps = {
     {
       id: 1,
       name: "Hugo Boss TEST 1",
-      type: "EYEGLASSES",
-      gender: "MALE",
+      typeId: 1,
+      genderId: 1,
       description: "HB glasses model TEST1",
       price: 800,
       brandId: 2,
@@ -42,8 +42,8 @@ export const ContextDefaultValue: ContextProps = {
     {
       id: 2,
       name: "Hugo Boss TEST 2",
-      type: "EYEGLASSES",
-      gender: "UNISEX",
+      typeId: 2,
+      genderId: 3,
       description: "HB glasses model TEST2",
       price: 1000,
       brandId: 2,
