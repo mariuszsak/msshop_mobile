@@ -1,5 +1,6 @@
 import React from "react";
 import { Image } from "react-native";
+import { DB_HOST, DB_PORT } from "@env";
 
 interface ImageNumber {
   id: number;
@@ -7,11 +8,11 @@ interface ImageNumber {
 
 const BigImage = (props: ImageNumber) => {
   return (
-      <Image
-        resizeMode="contain"
-        source={{ uri: `http://192.168.0.2:3000/img/${props.id}.jpg` }}
-        style={{ width: 300, height: 300 }}
-      />
+    <Image
+      resizeMode="contain"
+      source={{ uri: `http://${DB_HOST}:${DB_PORT}/img/${props.id}.jpg` }}
+      style={{ width: 300, height: 300 }}
+    />
   );
 };
 
