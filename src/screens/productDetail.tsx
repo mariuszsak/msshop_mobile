@@ -1,25 +1,24 @@
 import { View, Text, Image, StyleSheet, Button } from "react-native";
 import React from "react";
+import { MemoizedBigImage } from "../components/BigImage";
 
 export default function ProductDetail({ route }: any) {
+  const { id, name, typeId, genderId, description, price } = route.params;
+  const brandName = route.params.brand.name;
   return (
     <View
       style={{ flex: 1, backgroundColor: "#fff" }}
     >
       <View style={styles.left}>
-        <Image
-          resizeMode="contain"
-          source={{ uri: `http://192.168.0.2:3000/img/${route.params.id}.jpg` }}
-          style={{ width: 300, height: 300 }}
-        />
+        <MemoizedBigImage id={id} />
       </View>
       <Text>Product detail:</Text>
-      <Text>{route.params.name.replace(/\"/g, "")}</Text>
-      <Text>{route.params.type.replace(/\"/g, "")}</Text>
-      <Text>{route.params.gender.replace(/\"/g, "")}</Text>
-      <Text>{route.params.description.replace(/\"/g, "")}</Text>
-      <Text>{route.params.price.replace(/\"/g, "")}</Text>
-      <Text>{route.params.brand.name.replace(/\"/g, "")}</Text>
+      <Text>{name.replace(/\"/g, "")}</Text>
+      <Text>{typeId}</Text>
+      <Text>{genderId}</Text>
+      <Text>{description.replace(/\"/g, "")}</Text>
+      <Text>{price.replace(/\"/g, "")}</Text>
+      <Text>{brandName.replace(/\"/g, "")}</Text>
     </View>
   );
 }
