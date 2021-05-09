@@ -1,14 +1,10 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react';
+import { View, Text } from 'react-native';
 
-const BasketComponent = (props: { name: any; }) => {
-  return (
+const BasketComponent = (props: { name: any }) => (
     <View>
-      <Text>
-        {props.name}
-      </Text>
+        <Text>{props.name}</Text>
     </View>
-  );
-};
+);
 
 export default BasketComponent;
