@@ -1,34 +1,40 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { MemoizedBigImage } from "../components/BigImage";
+import { Brand, Gender, Type } from "../interfaces/MyItem";
+import styles from "../styles/style";
 
-export default function ProductDetail({ route }: any) {
-  const { id, name, typeId, genderId, description, price } = route.params;
-  const brandName = route.params.brand.name;
+interface ProductDetailProps {
+  route: {
+    params: {
+      id: number;
+      name: string;
+      description: string;
+      price: number;
+      brand: Brand;
+      type: Type;
+      gender: Gender;
+    }
+  }
+}
+
+export default function ProductDetail(props: ProductDetailProps) {
+  const { id, name, description, price, brand, gender, type } = props.route.params;
   return (
     <View style={{
       flex: 1,
       backgroundColor: "#fff"
     }}>
-      <View style={styles.left}>
+      <View style={styles.detail}>
         <MemoizedBigImage id={id} />
       </View>
       <Text>Product detail:</Text>
-      <Text>{name.replace(/"/g, "")}</Text>
-      <Text>{typeId}</Text>
-      <Text>{genderId}</Text>
-      <Text>{description.replace(/"/g, "")}</Text>
-      <Text>{price.replace(/"/g, "")}</Text>
-      <Text>{brandName.replace(/"/g, "")}</Text>
+      <Text>{name}</Text>
+      <Text>{description}</Text>
+      <Text>{price}</Text>
+      <Text>{brand.brand_name}</Text>
+      <Text>{gender.gender_name}</Text>
+      <Text>{type.type_name}</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  left: {
-    borderWidth: 0,
-    padding: 0,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});

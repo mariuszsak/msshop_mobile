@@ -2,11 +2,11 @@ import React from 'react';
 import { Image } from 'react-native';
 import { DB_HOST, DB_PORT } from '@env';
 
-interface ImageNumber {
+interface BigImageNumber {
     id: number;
 }
 
-const BigImage = (props: ImageNumber) => (
+const BigImage = (props: BigImageNumber) => (
     <Image
         resizeMode="contain"
         source={{ uri: `http://${DB_HOST}:${DB_PORT}/img/${props.id}.jpg` }}
