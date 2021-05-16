@@ -10,6 +10,7 @@ npm-debug.*
 web-build/
 .idea
 .env
+coverage
 
 # macOS
 .DS_Store
