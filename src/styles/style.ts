@@ -60,7 +60,18 @@ const styles = StyleSheet.create({
     padding: 0,
     justifyContent: "center",
     alignItems: "center"
-
+  },
+  quantityContainer: {
+    width: "50%",
+    borderStyle: "solid",
+    borderWidth: 1,
+    flexDirection: "row",
+    alignContent: "space-between",
+    justifyContent: "flex-end"
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+    justifyContent: 'space-between',
   }
 });
 
