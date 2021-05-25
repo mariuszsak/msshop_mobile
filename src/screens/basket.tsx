@@ -1,7 +1,7 @@
 import { View, StyleSheet, StatusBar } from 'react-native';
 import React from 'react';
 import Logo from '../components/logo';
-import { AppContext, ContextProps } from '../context';
+import { AppContext, ContextProps } from '../context/ItemContext';
 import BasketComponent from '../components/basketComponent';
 
 export default function Basket() {

@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Checkbox } from 'react-native-paper';
 import Logo from '../components/logo';
-import { AppContext } from '../context';
+import { AppContext } from '../context/ItemContext';
 import CheckBox from '../components/CheckBox';
 import { fetchData } from '../services/fetchData';
 

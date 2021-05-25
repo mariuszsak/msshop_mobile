@@ -1,8 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import React from "react";
 import { MemoizedBigImage } from "../components/BigImage";
 import { Brand, Gender, Type } from "../interfaces/MyItem";
 import styles from "../styles/style";
+import ButtonsAddRemoveItem from "../components/buttons/ButtonsAddRemoveItem";
+import ButtonAddToCart from "../components/buttons/ButtonAddToCart";
 
 interface ProductDetailProps {
   route: {
@@ -35,6 +37,35 @@ export default function ProductDetail(props: ProductDetailProps) {
       <Text>{brand.brand_name}</Text>
       <Text>{gender.gender_name}</Text>
       <Text>{type.type_name}</Text>
+      <View>
+        <ButtonsAddRemoveItem />
+        <ButtonAddToCart />
+      </View>
+      {/*<View style={styles.quantityContainer}>*/}
+      {/*  <View style={styles.buttonsContainer}>*/}
+      {/*    <ButtonBase*/}
+      {/*      title="+"*/}
+      {/*      onPress={() => {*/}
+      {/*      }}*/}
+      {/*    />*/}
+      {/*    <TextInput*/}
+      {/*      keyboardType = 'numeric'*/}
+      {/*      onChangeText = {()=> {}}*/}
+      {/*    />*/}
+      {/*    <ButtonBase*/}
+      {/*      title="-"*/}
+      {/*      onPress={() => {*/}
+      {/*      }}*/}
+      {/*    />*/}
+      {/*  </View>*/}
+      {/*  <View>*/}
+      {/*    <ButtonBase*/}
+      {/*      title="Add to cart"*/}
+      {/*      onPress={() => {*/}
+      {/*      }}*/}
+      {/*    />*/}
+      {/*  </View>*/}
+      {/*</View>*/}
     </View>
   );
 }
