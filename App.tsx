@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AppTabNavigator from "./src/components/navigator/AppTabNavigator";
-import { AppContextProvider } from "./src/context";
+import { AppContextProvider } from "./src/context/ItemContext";
 import { fetchData } from "./src/services/fetchData";
 
 interface AppState {
