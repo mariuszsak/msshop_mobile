@@ -1,39 +1,30 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import AppTabNavigator from "./src/components/navigator/AppTabNavigator";
-import { AppContextProvider } from "./src/context/ItemContext";
+import { AppContextProvider, useProduct } from "./src/context/ItemContext";
 import { fetchData } from "./src/services/fetchData";
 
-interface AppState {
-  items: [];
-}
+const App = () => {
+  const { setGlassItems } = useProduct();
 
-interface Props {
-  navigation: any;
-}
-
-class App extends Component<Props, AppState> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      items: []
-    };
-  }
-
-  componentDidMount() {
-    fetchData("products").then((response) => {
-      this.setState({
-        items: response
-      });
+  const handleFetchData = () => {
+    fetchData("products").then(response => {
+      setGlassItems(response);
     });
-  }
+  };
 
-  render() {
-    return (
-      <AppContextProvider value={this.state}>
-        <AppTabNavigator />
-      </AppContextProvider>
-    );
-  }
-}
+  useEffect(() => {
+    handleFetchData();
+  }, []);
 
-export default App;
+  return (
+    <AppTabNavigator />
+  );
+};
+
+export default () => {
+  return (
+    <AppContextProvider>
+      <App />
+    </AppContextProvider>
+  );
+};
