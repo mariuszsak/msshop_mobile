@@ -1,11 +1,10 @@
 import { View, StyleSheet, StatusBar } from 'react-native';
 import React from 'react';
 import Logo from '../components/logo';
-import { AppContext, ContextProps } from '../context/ItemContext';
+import { AppContext } from '../context/ItemContext';
 import BasketComponent from '../components/basketComponent';
 
 export default function Basket() {
-    const context: ContextProps = React.useContext(AppContext);
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor="#61dafb" hidden={false} />
@@ -15,7 +14,7 @@ export default function Basket() {
             <View style={styles.body}>
                 <AppContext.Consumer>
                     {(context) =>
-                        context.items.map((item, index) => (
+                        context.glassItems.map((item, index) => (
                             <BasketComponent name={item.name} key={index} />
                         ))
                     }
