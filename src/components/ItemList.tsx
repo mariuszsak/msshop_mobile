@@ -31,7 +31,12 @@ export function ItemList(props: any) {
               <MemoizedMediumImage id={item.id} />
             </View>
             <View style={styles.right}>
-              <MemoizedShortInfo name={item.brand.name} price={item.price} />
+              <MemoizedShortInfo
+                name={item.brand.name}
+                price={item.price}
+                brand={item.brand.brand_name}
+                type={item.type.type_name}
+              />
             </View>
           </TouchableOpacity>
         )}
