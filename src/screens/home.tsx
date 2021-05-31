@@ -10,7 +10,11 @@ interface Props {
 
 export default function Home(props: Props) {
 
-  const { glassItems } = useProduct();
+  const {
+    glassItems,
+    isFiltered,
+    filteredGlassItems
+  } = useProduct();
 
   if (glassItems.length > 0) {
     return (
@@ -23,14 +27,22 @@ export default function Home(props: Props) {
           <Logo />
         </View>
         <View style={styles.body}>
-          <ItemList
-            data={glassItems}
-            navigation={props.navigation}
-          />
+          {isFiltered ?
+            <ItemList
+              data={filteredGlassItems}
+              navigation={props.navigation}
+            />
+            :
+            <ItemList
+              data={glassItems}
+              navigation={props.navigation}
+            />
+          }
         </View>
       </View>
     );
   }
+
   return (
     <View style={styles.container}>
       <Text>Loading</Text>
