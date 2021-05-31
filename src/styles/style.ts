@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
   },
   price: {
     fontWeight: "bold",
-    fontSize: 30
+    fontSize: 15
   },
   priceSmall: {
     fontWeight: "bold",
-    fontSize: 20
+    fontSize: 12
   },
   checkboxLabel: {
     fontSize: 10
