@@ -1,14 +1,15 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
 import React, { useEffect } from "react";
 import { Button } from "react-native-paper";
 import Logo from "../components/logo";
 import { useProduct } from "../context/ItemContext";
-import CheckBox from "../components/CheckBox";
+import CustomCheckbox from "../components/checkboxes/CustomCheckbox";
 import { fetchData } from "../services/fetchData";
 import { GlassBrand, GlassGender, GlassType } from "../../types";
+import CustomCheckboxHeader from "../components/checkboxes/CustomCheckboxHeader";
 
 
-export default function Filter() {
+export default function Filter(props: any) {
 
   const {
     glassItems,
@@ -19,12 +20,15 @@ export default function Filter() {
     glassItemsByBrand,
     setGlassItemsByBrand,
     selectedGlasses,
-    setSelectedGlasses
+    setSelectedGlasses,
+    setIsFiltered,
+    setFilteredGlassItems
   } = useProduct();
 
   const setDataToState = () => {
     fetchData("types").then(data => {
       setGlassItemsByType(data);
+
     });
 
     // add endpoint!
@@ -37,34 +41,38 @@ export default function Filter() {
     });
   };
 
-  // console.log(handleFetchTypes());
   useEffect(() => {
     setDataToState();
   }, []);
 
   function applyFiltersHandler(): void {
-    console.log("Apply clicked");
+
+    const tempType = selectedGlasses.filter(val => val.hasOwnProperty("type_name")) as any;
+    const tempGender = selectedGlasses.filter(val => val.hasOwnProperty("gender_name")) as any;
+    const tempBrand = selectedGlasses.filter(val => val.hasOwnProperty("brand_name")) as any;
+
+    const newArray = glassItems
+      .filter(val => tempType.map((item: GlassType) => item.type_name).includes(val.type.type_name))
+      .filter(val => tempGender.map((item: GlassGender) => item.gender_name).includes(val.gender.gender_name))
+      .filter(val => tempBrand.map((item: GlassBrand) => item.brand_name).includes(val.brand.brand_name));
+
+    setFilteredGlassItems(newArray);
+
+    setIsFiltered(true);
+    props.navigation.navigate("Home");
+
   }
 
-  function handleTypeClick(value: string): void {
-    glassItems.filter(element => {
-        return element.type.type_name === value ? element.type.type_name === value : glassItems;
-      }
-    );
+  function handleTypeClick(value: any): void {
+    setSelectedGlasses(prevstate => [...prevstate, value.type_name]);
   }
 
-  function handleGenderClick(value: string): void {
-    glassItems.filter(element => {
-        return element.gender.gender_name === value ? element.gender.gender_name === value : glassItems;
-      }
-    );
+  function handleGenderClick(value: any): void {
+    setSelectedGlasses(prevstate => [...prevstate, value.gender_name]);
   }
 
-  function handleBrandClick(value: string): void {
-    glassItems.filter(element => {
-        return element.brand.brand_name === value ? element.brand.brand_name === value : glassItems;
-      }
-    );
+  function handleBrandClick(value: any): void {
+    setSelectedGlasses(prevstate => [...prevstate, value.brand_name]);
   }
 
   return (
@@ -73,9 +81,7 @@ export default function Filter() {
         <Logo />
       </View>
       <View style={styles.body}>
-        <View>
-          <Text>Show glasses by type:</Text>
-        </View>
+        <CustomCheckboxHeader text="Show glasses by type:" />
         <View style={styles.checkboxes}>
           {glassItemsByType.map((item: GlassType, index: number) => (
             <TouchableOpacity
@@ -83,79 +89,41 @@ export default function Filter() {
               onPress={() => handleTypeClick(item.type_name)}
               style={styles.bor}
             >
-              <CheckBox
-                label={item.type_name}
-                id={index}
-                status={selectedGlasses.includes(item) ? "checked" : "unchecked"}
-                onPress={() => {
-                  if (selectedGlasses.includes(item)) {
-                    setSelectedGlasses(selectedGlasses.filter(i => i !== item));
-                  } else {
-                    setSelectedGlasses([...selectedGlasses, item]);
-                  }
-                }}
-              />
+              <CustomCheckbox item={item} index={index} name={item.type_name} />
             </TouchableOpacity>
           ))}
         </View>
       </View>
 
       <View style={styles.body}>
-        <View>
-          <Text>Show glasses by gender:</Text>
-        </View>
+        <CustomCheckboxHeader text="Show glasses by gender:" />
         <View style={styles.checkboxes}>
           {glassItemsByGender.map((item: GlassGender, index: number) => (
             <TouchableOpacity
               key={index}
-              onPress={() => handleGenderClick}
+              onPress={() => handleGenderClick(item.gender_name)}
               style={styles.bor}
             >
-              <CheckBox
-                label={item.gender_name}
-                id={index}
-                status={selectedGlasses.includes(item) ? "checked" : "unchecked"}
-                onPress={() => {
-                  if (selectedGlasses.includes(item)) {
-                    setSelectedGlasses(selectedGlasses.filter(i => i !== item));
-                  } else {
-                    setSelectedGlasses([...selectedGlasses, item]);
-                  }
-                }}
-              />
+              <CustomCheckbox item={item} index={index} name={item.gender_name} />
             </TouchableOpacity>
           ))}
         </View>
       </View>
 
       <View style={styles.body}>
-        <View>
-          <Text>Show glasses by brand:</Text>
-        </View>
+        <CustomCheckboxHeader text="Show glasses by brand:" />
         <View style={styles.checkboxes}>
           {glassItemsByBrand.map((item: GlassBrand, index: number) => (
-            <TouchableOpacity
+            <TouchableWithoutFeedback
               key={index}
               onPress={() => handleBrandClick(item.brand_name)}
               style={styles.bor}
             >
-              <CheckBox
-                label={item.brand_name}
-                id={index}
-                status={selectedGlasses.includes(item) ? "checked" : "unchecked"}
-                onPress={() => {
-                  if (selectedGlasses.includes(item)) {
-                    setSelectedGlasses(selectedGlasses.filter(i => i !== item));
-                  } else {
-                    setSelectedGlasses([...selectedGlasses, item]);
-                  }
-                }}
-              />
-            </TouchableOpacity>
+              <CustomCheckbox item={item} index={index} name={item.brand_name} />
+            </TouchableWithoutFeedback>
           ))}
         </View>
       </View>
-
       <View style={styles.btn}>
         <Button mode="contained" onPress={applyFiltersHandler}>
           Apply filters
