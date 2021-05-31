@@ -12,6 +12,10 @@ type GlassContext = {
   setGlassItemsByBrand: Dispatch<SetStateAction<GlassBrand[]>>;
   selectedGlasses: GlassSelections[];
   setSelectedGlasses: Dispatch<SetStateAction<GlassSelections[]>>;
+  isFiltered: boolean;
+  setIsFiltered: Dispatch<SetStateAction<boolean>>;
+  filteredGlassItems: GlassItem[];
+  setFilteredGlassItems: Dispatch<SetStateAction<GlassItem[]>>;
 }
 
 export const ContextDefaultValue: GlassContext = {
@@ -24,7 +28,11 @@ export const ContextDefaultValue: GlassContext = {
   glassItemsByBrand: [],
   setGlassItemsByBrand: () => {},
   selectedGlasses: [],
-  setSelectedGlasses: () => {}
+  setSelectedGlasses: () => {},
+  isFiltered: false,
+  setIsFiltered: () => {},
+  filteredGlassItems: [],
+  setFilteredGlassItems: ()=>{}
 };
 
 export const AppContext = createContext<GlassContext>(ContextDefaultValue);
@@ -44,11 +52,17 @@ export const AppContextProvider = ({ children }: {
   // general state with al items
   const [glassItems, setGlassItems] = useState<GlassItem[]>([]);
 
-
+  // data from endpoints
   const [glassItemsByType, setGlassItemsByType] = useState<GlassType[]>([]);
   const [glassItemsByGender, setGlassItemsByGender] = useState<GlassGender[]>([]);
   const [glassItemsByBrand, setGlassItemsByBrand] = useState<GlassBrand[]>([]);
+
+  // data for filtering
   const [selectedGlasses, setSelectedGlasses] = useState<GlassSelections[]>([]);
+
+  // filtered data
+  const [isFiltered, setIsFiltered] = useState<boolean>(false);
+  const [filteredGlassItems, setFilteredGlassItems] = useState<GlassItem[]>([]);
 
 
   return (
@@ -63,7 +77,11 @@ export const AppContextProvider = ({ children }: {
         glassItemsByBrand,
         setGlassItemsByBrand,
         selectedGlasses,
-        setSelectedGlasses
+        setSelectedGlasses,
+        isFiltered,
+        setIsFiltered,
+        filteredGlassItems,
+        setFilteredGlassItems
       }}>
       {children}
     </AppContext.Provider>
