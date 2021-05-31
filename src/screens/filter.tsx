@@ -28,10 +28,8 @@ export default function Filter(props: any) {
   const setDataToState = () => {
     fetchData("types").then(data => {
       setGlassItemsByType(data);
-
     });
 
-    // add endpoint!
     fetchData("gender").then(data => {
       setGlassItemsByGender(data);
     });
@@ -47,9 +45,14 @@ export default function Filter(props: any) {
 
   function applyFiltersHandler(): void {
 
-    const tempType = selectedGlasses.filter(val => val.hasOwnProperty("type_name")) as any;
-    const tempGender = selectedGlasses.filter(val => val.hasOwnProperty("gender_name")) as any;
-    const tempBrand = selectedGlasses.filter(val => val.hasOwnProperty("brand_name")) as any;
+    let tempType = selectedGlasses.filter(val => val.hasOwnProperty("type_name")) as any;
+    if (tempType.length === 0 || tempType.length === glassItemsByType.length) tempType = glassItemsByType;
+
+    let tempGender = selectedGlasses.filter(val => val.hasOwnProperty("gender_name")) as any;
+    if (tempGender.length === 0 || tempGender.length === glassItemsByGender.length) tempGender = glassItemsByGender;
+
+    let tempBrand = selectedGlasses.filter(val => val.hasOwnProperty("brand_name")) as any;
+    if (tempBrand.length === 0 || tempBrand.length === glassItemsByBrand.length) tempBrand = glassItemsByBrand;
 
     const newArray = glassItems
       .filter(val => tempType.map((item: GlassType) => item.type_name).includes(val.type.type_name))
@@ -60,7 +63,6 @@ export default function Filter(props: any) {
 
     setIsFiltered(true);
     props.navigation.navigate("Home");
-
   }
 
   function handleTypeClick(value: any): void {
@@ -132,7 +134,6 @@ export default function Filter(props: any) {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
