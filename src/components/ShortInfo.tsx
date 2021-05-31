@@ -5,10 +5,12 @@ import styles from "../styles/style";
 interface ShortInfoProps {
   name: string;
   price: string;
+  brand: string;
+  type: string
 }
 
 const ShortInfo = (props: ShortInfoProps) => {
-  const {name, price} = props;
+  const {name, price, brand, type} = props;
   return (
     <>
       <View>
@@ -20,8 +22,11 @@ const ShortInfo = (props: ShortInfoProps) => {
         <Text style={styles.priceSmall}>
           Our price:
           <Text style={styles.price}>
-            {" "}
-            {price}
+            {price}{"\n"}
+          </Text>
+          <Text style={styles.price}>
+            {brand}{"\n"}
+            {type}
           </Text>
         </Text>
       </View>
