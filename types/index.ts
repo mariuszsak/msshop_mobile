@@ -28,3 +28,8 @@ export type GlassItem = {
 export type ProductType = { id: number } & GlassType;
 
 export type GlassSelections = GlassType | GlassBrand | GlassGender;
+
+export type UserData = {
+  firstName: string;
+  email: string;
+}
