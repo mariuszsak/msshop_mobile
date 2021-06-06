@@ -5,6 +5,7 @@ import { GlassItem } from "../../types";
 import styles from "../styles/style";
 import ButtonsAddRemoveItem from "../components/buttons/ButtonsAddRemoveItem";
 import ButtonAddToCart from "../components/buttons/ButtonAddToCart";
+import DetailText from "../components/text/DetailText";
 
 interface IProductDetail {
   route: {
@@ -23,7 +24,9 @@ const ProductDetail = (props: IProductDetail) => {
         <MemoizedBigImage id={id} />
       </View>
       <Text>Product detail:</Text>
-      <Text>{name}</Text>
+      <DetailText>
+      <Text>Name: {name}</Text>
+      </DetailText>
       <Text>{description}</Text>
       <Text>{price}</Text>
       <Text>{brand.brand_name}</Text>

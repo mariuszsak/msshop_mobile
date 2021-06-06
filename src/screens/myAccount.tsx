@@ -1,45 +1,51 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import Logo from "../components/logo";
-import firebase from "firebase/app";
 import "firebase/auth";
+import { UserData } from "../../types";
+import axios from "axios";
+import LoginForm from "../components/LoginForm";
+import { useLogin } from "../context/LoginContext";
 
-export default function MyAccount() {
+interface Props {
+  navigation: any;
+}
 
-  const [logged, setLogged] = useState<boolean>(false);
+export default function MyAccount(props: Props) {
+
+  const { token, isLogged } = useLogin();
+  const [userData, setUserData] = useState<UserData[]>([]);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(r => {
-      if (r) {
-        setLogged(true);
+    if (token) {
+      fetchUserData(token);
+    }
+  }, [token, isLogged]);
+
+  const fetchUserData = async (token: string) => {
+    const res = await axios.get("http://192.168.0.2:3000/users", {
+      headers: {
+        Authorization: "Bearer " + token
       }
-    });
-  });
+    }).then();
+  };
 
-  function login(email: string, password: string) {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      // .then((r: firebase.auth.UserCredential) => {
-      //   if (r) {
-      //     setLogged(true);
-      //   }
-      .then();
-  }
-
-return (
-  <View style={styles.container}>
-    <View style={styles.header}>
-      <Logo />
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Logo />
+      </View>
+      <View style={styles.body}>
+        <Text>My account</Text>
+        {isLogged
+          ?
+          <Text>You are logged in</Text>
+          :
+          <LoginForm navigation={props.navigation} />
+        }
+      </View>
     </View>
-    <View style={styles.body}>
-      <Text>My account</Text>
-      {logged ? <Text>You are logged in</Text> :
-        <Button title={"hi"} onPress={() => login("abc@aaa.pl", "bumbum")} />}
-
-    </View>
-  </View>
-);
+  );
 }
 
 const styles = StyleSheet.create({
