@@ -3,6 +3,7 @@ import { StatusBar, StyleSheet, Text, View } from "react-native";
 import Logo from "../components/logo";
 import { ItemList } from "../components/ItemList";
 import { useProduct } from "../context/ItemContext";
+import styles from "../styles/style";
 
 interface Props {
   navigation: any;
@@ -19,11 +20,7 @@ export default function Home(props: Props) {
   if (glassItems.length > 0) {
     return (
       <View style={styles.container}>
-        <StatusBar
-          backgroundColor="#61dafb"
-          hidden={false}
-        />
-        <View style={styles.header}>
+        <View style={styles.logo}>
           <Logo />
         </View>
         <View style={styles.body}>
@@ -49,20 +46,3 @@ export default function Home(props: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  header: {
-    flex: 1,
-    backgroundColor: "#fff"
-  },
-  body: {
-    flex: 9,
-    backgroundColor: "#fff"
-  },
-  statusbar: {
-    backgroundColor: "#61dafb"
-  }
-});

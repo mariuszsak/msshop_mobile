@@ -13,7 +13,7 @@ const MediumImage = (props: MediumImageProps) => {
     <Image
       resizeMode="center"
       source={{
-        uri: `http://${DB_HOST}:${DB_PORT}/img/${id}.jpg`
+        uri: `http://85a888e1adcc.ngrok.io/img/${id}.jpg`
       }}
       style={styles.mediumImage}
     />

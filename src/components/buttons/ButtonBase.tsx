@@ -1,13 +1,16 @@
 import React from "react";
-import { Button } from "react-native";
+import { Button, View } from "react-native";
 import { ItemButton } from "../../../types";
+import style from "../../styles/style";
 
 const ButtonBase = (props: ItemButton) => {
   return (
-    <Button
-      title={props.title}
-      onPress={props.onPress}
-    />
+    <View style={style.btn}>
+      <Button
+        title={props.title}
+        onPress={props.onPress}
+      />
+    </View>
   );
 };
 

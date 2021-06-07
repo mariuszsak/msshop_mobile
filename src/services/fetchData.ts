@@ -1,6 +1,6 @@
-export async function fetchData(endpoint: string, token: string): Promise<any> {
+export async function fetchData(endpoint: string, token?: string): Promise<any> {
     const response: Response = await fetch(
-        `http://192.168.0.2:3000/${endpoint}`, {
+        `http://85a888e1adcc.ngrok.io/${endpoint}`, {
             headers: {
                 Authorization: 'Bearer ' + token
             }

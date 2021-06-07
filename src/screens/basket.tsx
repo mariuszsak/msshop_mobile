@@ -3,12 +3,13 @@ import React from 'react';
 import Logo from '../components/logo';
 import { AppContext } from '../context/ItemContext';
 import BasketComponent from '../components/basketComponent';
+import styles from "../styles/style";
 
 export default function Basket() {
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor="#61dafb" hidden={false} />
-            <View style={styles.header}>
+            <View style={styles.logo}>
                 <Logo />
             </View>
             <View style={styles.body}>
@@ -23,16 +24,3 @@ export default function Basket() {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    header: {
-        flex: 1,
-        backgroundColor: '#fff'
-    },
-    body: {
-        flex: 9
-    }
-});

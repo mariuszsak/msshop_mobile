@@ -6,6 +6,7 @@ import { UserData } from "../../types";
 import axios from "axios";
 import LoginForm from "../components/LoginForm";
 import { useLogin } from "../context/LoginContext";
+import styles from "../styles/style";
 
 interface Props {
   navigation: any;
@@ -32,7 +33,7 @@ export default function MyAccount(props: Props) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.logo}>
         <Logo />
       </View>
       <View style={styles.body}>
@@ -47,16 +48,3 @@ export default function MyAccount(props: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  header: {
-    flex: 1,
-    backgroundColor: "pink"
-  },
-  body: {
-    flex: 9
-  }
-});

@@ -1,15 +1,21 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  // wtf
   default: {
-    flex: 1,
-    width: "100%"
+    flex: 1
   },
+  //wtf
+  container: {
+    flex:1
+  },
+  //logo style
   logo: {
     flex: 1,
     width: "100%",
     resizeMode: "contain"
   },
+  // FlatList
   allItems: {
     backgroundColor: "#fff",
     margin: 5
@@ -24,6 +30,7 @@ const styles = StyleSheet.create({
     borderColor: "red",
     height: 200
   },
+  //wtf
   img: {
     resizeMode: "stretch",
     width: "100%"
@@ -53,8 +60,8 @@ const styles = StyleSheet.create({
     fontSize: 10
   },
   mediumImage: {
-    width: 190,
-    height: 190
+    width: 150,
+    height: 150
   },
   detail: {
     borderWidth: 0,
@@ -73,6 +80,30 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
     justifyContent: 'space-between',
+  },
+    checkboxes: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "flex-end"
+  },
+  body: {
+    flex: 9,
+    backgroundColor: "#fff"
+  },
+  bor: {
+    flex: 1,
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: "black"
+  },
+    btn: {
+    padding: 5,
+    backgroundColor: "#fff"
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1
   }
 });
 

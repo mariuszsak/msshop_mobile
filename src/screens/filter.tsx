@@ -1,13 +1,12 @@
-import { View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
+import { View, Button, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
 import React, { useEffect } from "react";
-import { Button } from "react-native-paper";
 import Logo from "../components/logo";
 import { useProduct } from "../context/ItemContext";
 import CustomCheckbox from "../components/checkboxes/CustomCheckbox";
 import { fetchData } from "../services/fetchData";
 import { GlassBrand, GlassGender, GlassType } from "../../types";
 import CustomCheckboxHeader from "../components/checkboxes/CustomCheckboxHeader";
-
+import styles from "../styles/style";
 
 export default function Filter(props: any) {
 
@@ -79,95 +78,61 @@ export default function Filter(props: any) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.logo}>
         <Logo />
       </View>
       <View style={styles.body}>
-        <CustomCheckboxHeader text="Show glasses by type:" />
-        <View style={styles.checkboxes}>
-          {glassItemsByType.map((item: GlassType, index: number) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => handleTypeClick(item.type_name)}
-              style={styles.bor}
-            >
-              <CustomCheckbox item={item} index={index} name={item.type_name} />
-            </TouchableOpacity>
-          ))}
+        <View>
+          <CustomCheckboxHeader text="Show glasses by type:" />
+          <View style={styles.checkboxes}>
+            {glassItemsByType.map((item: GlassType, index: number) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleTypeClick(item.type_name)}
+                style={styles.bor}
+              >
+                <CustomCheckbox item={item} index={index} name={item.type_name} />
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
-      </View>
 
-      <View style={styles.body}>
-        <CustomCheckboxHeader text="Show glasses by gender:" />
-        <View style={styles.checkboxes}>
-          {glassItemsByGender.map((item: GlassGender, index: number) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => handleGenderClick(item.gender_name)}
-              style={styles.bor}
-            >
-              <CustomCheckbox item={item} index={index} name={item.gender_name} />
-            </TouchableOpacity>
-          ))}
+        <View>
+          <CustomCheckboxHeader text="Show glasses by gender:" />
+          <View style={styles.checkboxes}>
+            {glassItemsByGender.map((item: GlassGender, index: number) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleGenderClick(item.gender_name)}
+                style={styles.bor}
+              >
+                <CustomCheckbox item={item} index={index} name={item.gender_name} />
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
-      </View>
 
-      <View style={styles.body}>
-        <CustomCheckboxHeader text="Show glasses by brand:" />
-        <View style={styles.checkboxes}>
-          {glassItemsByBrand.map((item: GlassBrand, index: number) => (
-            <TouchableWithoutFeedback
-              key={index}
-              onPress={() => handleBrandClick(item.brand_name)}
-              style={styles.bor}
-            >
-              <CustomCheckbox item={item} index={index} name={item.brand_name} />
-            </TouchableWithoutFeedback>
-          ))}
+        <View>
+          <CustomCheckboxHeader text="Show glasses by brand:" />
+          <View style={styles.checkboxes}>
+            {glassItemsByBrand.map((item: GlassBrand, index: number) => (
+              <TouchableWithoutFeedback
+                key={index}
+                onPress={() => handleBrandClick(item.brand_name)}
+                style={styles.bor}
+              >
+                <CustomCheckbox item={item} index={index} name={item.brand_name} />
+              </TouchableWithoutFeedback>
+            ))}
+          </View>
         </View>
-      </View>
-      <View style={styles.btn}>
-        <Button mode="contained" onPress={applyFiltersHandler}>
-          Apply filters
-        </Button>
+        <View style={styles.btn}>
+          <Button
+            onPress={applyFiltersHandler}
+            title={"Apply filters"}
+          />
+        </View>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  header: {
-    flex: 1,
-    backgroundColor: "#fff"
-  },
-  body: {
-    flex: 9,
-    backgroundColor: "#fff"
-  },
-  checkboxes: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "flex-end"
-  },
-  option: {
-    borderStyle: "solid",
-    borderWidth: 1,
-    borderColor: "black"
-  },
-  bor: {
-    flex: 1,
-    borderStyle: "solid",
-    borderWidth: 1,
-    borderColor: "black"
-  },
-  btn: {
-    padding: 5,
-    backgroundColor: "#fff"
-  },
-  checkboxLabel: {
-    fontSize: 12
-  }
-});

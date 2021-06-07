@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, TextInput, StyleSheet, View, Text } from "react-native";
+import { Button, TextInput, View, Text } from "react-native";
 import firebase from "firebase";
 import { useLogin } from "../context/LoginContext";
+import styles from "../styles/style";
 
 const LoginForm = (props: { navigation: { navigate: any; }; }) => {
 
@@ -56,20 +57,14 @@ const LoginForm = (props: { navigation: { navigate: any; }; }) => {
           autoCapitalize="none"
         />
       </View>
-      <Button
-        title={"LOGIN"}
-        onPress={() => login(email, password)}
-      />
+      <View style={styles.btn}>
+        <Button
+          title={"LOGIN"}
+          onPress={() => login(email, password)}
+        />
+      </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1
-  }
-});
 
 export default LoginForm;

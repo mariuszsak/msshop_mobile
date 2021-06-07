@@ -28,7 +28,7 @@ const AppTabNavigator = () => {
           height: 50,
           left: 20,
           right: 20,
-          bottom: 50,
+          bottom: 5,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -37,7 +37,6 @@ const AppTabNavigator = () => {
           shadowOpacity: 0.1,
           shadowRadius: 0.1,
           elevation: 2
-
         }
       }}
     >
