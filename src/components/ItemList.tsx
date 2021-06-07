@@ -17,7 +17,7 @@ export function ItemList(props: any) {
   }
 
   return (
-    <View style={styles.default}>
+    <View style={styles.container}>
       <FlatList
         contentContainerStyle={styles.allItems}
         data={props.data}
@@ -32,7 +32,8 @@ export function ItemList(props: any) {
             </View>
             <View style={styles.right}>
               <MemoizedShortInfo
-                name={item.brand.name}
+                // TODO name is unnecessary
+                name={item.brand.brand_name}
                 price={item.price}
                 brand={item.brand.brand_name}
                 type={item.type.type_name}

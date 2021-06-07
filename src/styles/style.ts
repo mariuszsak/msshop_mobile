@@ -1,10 +1,6 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  // wtf
-  default: {
-    flex: 1
-  },
   //wtf
   container: {
     flex:1
@@ -12,13 +8,15 @@ const styles = StyleSheet.create({
   //logo style
   logo: {
     flex: 1,
+    paddingTop:10,
     width: "100%",
-    resizeMode: "contain"
+    resizeMode: "contain",
+    backgroundColor: '#fff'
   },
   // FlatList
   allItems: {
     backgroundColor: "#fff",
-    margin: 5
+    margin: 15
   },
   singleItem: {
     paddingTop: 5,
@@ -26,35 +24,34 @@ const styles = StyleSheet.create({
     marginTop: 5,
     flexDirection: "row",
     borderStyle: "solid",
-    borderWidth: 1,
-    borderColor: "red",
-    height: 200
-  },
-  //wtf
-  img: {
-    resizeMode: "stretch",
-    width: "100%"
+    // borderWidth: 1,
+    // borderColor: "red",
+    height: 150
   },
   left: {
-    width: "50%",
-    borderWidth: 1
+    // width: "50%",
+    // borderWidth: 1
   },
   right: {
-    flexDirection: "column",
-    padding: 5
+    // flexDirection: "column",
+    justifyContent: "flex-start",
+    paddingLeft: 35,
+    paddingTop: 35
   },
   name: {
-    fontFamily: 'Roboto',
-    fontWeight: "bold",
-    fontSize: 20
+    // fontFamily: 'Roboto',
+    // fontWeight: "bold",
+    color: '#FF7657',
+    fontWeight: 'bold',
+    fontSize: 25
   },
-  price: {
-    fontWeight: "bold",
+  type: {
     fontSize: 15
   },
-  priceSmall: {
+  price: {
+    paddingTop: 5,
     fontWeight: "bold",
-    fontSize: 12
+    fontSize: 15
   },
   checkboxLabel: {
     fontSize: 10

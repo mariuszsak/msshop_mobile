@@ -14,18 +14,18 @@ const AppTabNavigator = () => {
     <Tab.Navigator
       tabBarOptions={{
         activeTintColor: "white",
-        inactiveTintColor: "blue",
+        inactiveTintColor: "black",
         labelStyle: {
           padding: 0,
           marginTop: 0,
-          marginBottom: 4
+          marginBottom: 10
         },
         style: {
           margin: 0,
           position: "absolute",
           borderRadius: 15,
-          backgroundColor: "#65C6C4",
-          height: 50,
+          backgroundColor: "#32ACDB",
+          height: 70,
           left: 20,
           right: 20,
           bottom: 5,

@@ -15,20 +15,16 @@ const ShortInfo = (props: ShortInfoProps) => {
     <>
       <View>
         <Text style={styles.name}>
-          {name}
+         {name}
         </Text>
       </View>
       <View>
-        <Text style={styles.priceSmall}>
-          Our price:
-          <Text style={styles.price}>
-            {price}{"\n"}
-          </Text>
-          <Text style={styles.price}>
-            {brand}{"\n"}
+          <Text style={styles.type}>
             {type}
           </Text>
-        </Text>
+          <Text style={styles.price}>
+            {price}zł
+          </Text>
       </View>
     </>
   );
