@@ -1,6 +1,8 @@
 import React from "react";
 import ButtonBase from "./ButtonBase";
 import ItemInput from "../ItemInput";
+import { View } from "react-native";
+import ButtonAddToCart from "./ButtonAddToCart";
 
 const ButtonsAddRemoveItem = () => {
   const handleAddItem = () => {
@@ -11,9 +13,9 @@ const ButtonsAddRemoveItem = () => {
   };
 
   return (
-    <>
+    <View style={{ flexDirection: "row", justifyContent: "flex-end", right: 10}}>
       <ButtonBase
-        title="+"
+        title="-"
         onPress={handleAddItem}
       />
       <ItemInput />
@@ -22,7 +24,8 @@ const ButtonsAddRemoveItem = () => {
         title="+"
         onPress={handleRemoveItem}
       />
-    </>
+      <ButtonAddToCart />
+    </View>
   );
 };
 
