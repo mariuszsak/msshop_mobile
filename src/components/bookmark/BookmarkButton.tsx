@@ -4,12 +4,14 @@ import styles from "../../styles/style";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const BookmarkButton = () => {
+
   return (
-    <View style={styles.bookmark}>
+    <View>
       <Text>
         <Icon name="bookmark-outline" size={22} color={"white"} />
       </Text>
     </View>
+
   );
 };
 
