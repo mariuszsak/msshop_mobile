@@ -11,9 +11,9 @@ const MediumImage = (props: MediumImageProps) => {
   const id = props.id;
   return (
     <Image
-      resizeMode="center"
+      resizeMode="contain"
       source={{
-        uri: `http://85a888e1adcc.ngrok.io/img/${id}.jpg`
+        uri: `http://378d6a5589d6.ngrok.io/img/${id}.jpg`
       }}
       style={styles.mediumImage}
     />

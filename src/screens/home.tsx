@@ -20,7 +20,7 @@ export default function Home(props: Props) {
   if (glassItems.length > 0) {
     return (
       <View style={styles.container}>
-        <View style={styles.logo}>
+        <View style={styles.header}>
           <Logo />
         </View>
         <View style={styles.body}>
@@ -36,6 +36,7 @@ export default function Home(props: Props) {
             />
           }
         </View>
+        <View style={styles.footer} />
       </View>
     );
   }

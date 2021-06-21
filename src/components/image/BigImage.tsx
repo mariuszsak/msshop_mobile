@@ -9,8 +9,11 @@ interface BigImageNumber {
 const BigImage = (props: BigImageNumber) => (
     <Image
         resizeMode="contain"
-        source={{ uri: `http://85a888e1adcc.ngrok.io/img/${props.id}.jpg` }}
-        style={{ width: 300, height: 300 }}
+        source={{ uri: `http://378d6a5589d6.ngrok.io/img/${props.id}.jpg` }}
+        style={{ width: 330, height: 156, margin:0, padding:0,
+            top:0,
+            left: 0
+        }}
     />
 );
 
