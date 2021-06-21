@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { MemoizedBigImage } from "../components/BigImage";
+import { MemoizedBigImage } from "../components/image/BigImage";
 import { GlassItem } from "../../types";
 import styles from "../styles/style";
 import ButtonsAddRemoveItem from "../components/buttons/ButtonsAddRemoveItem";
@@ -14,27 +14,28 @@ interface IProductDetail {
 }
 
 const ProductDetail = (props: IProductDetail) => {
-  const { id, name, description, price, brand, gender, type } = props.route.params;
+  const { id, name, description, price, gender, type } = props.route.params;
   return (
     <View style={{
       flex: 1,
-      backgroundColor: "#fff"
+      backgroundColor: "#fff",
+      borderStyle: "solid",
+      flexDirection: "column"
+
     }}>
       <View style={styles.detail}>
         <MemoizedBigImage id={id} />
       </View>
-      <Text>Product detail:</Text>
-      <DetailText>
-      <Text>Name: {name}</Text>
-      </DetailText>
-      <Text>{description}</Text>
-      <Text>{price}</Text>
-      <Text>{brand.brand_name}</Text>
-      <Text>{gender.gender_name}</Text>
-      <Text>{type.type_name}</Text>
-      <View>
+      <View style={{ flex: 3, padding: 10 }}>
+        <DetailText>
+          <Text>{name}</Text>
+        </DetailText>
+        <Text style={styles.description}>{type.type_name}, {gender.gender_name}</Text>
+        <Text style={styles.priceDetail}>{price}PLN</Text>
+        <Text>{description}</Text>
+      </View>
+      <View style={styles.addRemoveContainer}>
         <ButtonsAddRemoveItem />
-        <ButtonAddToCart />
       </View>
     </View>
   );
