@@ -23,7 +23,7 @@ const ShortInfo = (props: ShortInfoProps) => {
             {type}
           </Text>
           <Text style={styles.price}>
-            {price}zł
+            {price}PLN
           </Text>
       </View>
     </>
