@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, ScrollView, TouchableOpacity, View } from "react-native";
+import { FlatList, TouchableOpacity, View } from "react-native";
 import ProductDetail from "../screens/productDetail";
 import styles from "../styles/style";
 import BookmarkButton from "./bookmark/BookmarkButton";
@@ -20,32 +20,33 @@ export function ItemList(props: any) {
     console.log("bookmarked!");
   }
 
+  const element = ({ item }: any) => {
+    return (
+      <TouchableOpacity
+        style={styles.singleItem}
+        onPress={() => goDetail(item)}
+      >
+        <ShortItem item={item} />
+        <TouchableOpacity
+          onPress={() => onPress()}
+          style={
+            styles.bookmark
+          }>
+          <BookmarkButton />
+        </TouchableOpacity>
+      </TouchableOpacity>
+    );
+  };
+
   return (
-    <View style={styles.container}>
-      <ScrollView horizontal={false}>
-        <FlatList
-          contentContainerStyle={styles.allItems}
-          data={props.data}
-          numColumns={2}
-          horizontal={false}
-          keyExtractor={(i, index) => index.toString()}
-          renderItem={({ item, index }) => (
-            <TouchableOpacity
-              style={styles.singleItem}
-              onPress={() => goDetail(item)}
-            >
-              <ShortItem item={item} />
-              <TouchableOpacity
-                onPress={() => onPress()}
-                style={
-                  styles.bookmark
-                }>
-                <BookmarkButton />
-              </TouchableOpacity>
-            </TouchableOpacity>
-          )}
-        />
-      </ScrollView>
+    <View>
+      <FlatList
+        contentContainerStyle={styles.allItems}
+        data={props.data}
+        numColumns={2}
+        keyExtractor={item => item.id}
+        renderItem={element}
+      />
     </View>
   );
 }
