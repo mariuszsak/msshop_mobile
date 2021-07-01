@@ -4,21 +4,19 @@ import ProductDetail from "../screens/productDetail";
 import styles from "../styles/style";
 import BookmarkButton from "./bookmark/BookmarkButton";
 import ShortItem from "./item/ShortItem";
+import { BookmarkedItem } from "../../types";
 
 type Props = {
   onPress(): void;
 };
 
-export function ItemList(props: any) {
+export const ItemList = (props: BookmarkedItem[] | any) => {
+
   function goDetail(item: Props) {
     const { navigate } = props.navigation;
-    console.log(item);
     navigate("ProductDetail", item);
   }
 
-  function onPress() {
-    console.log("bookmarked!");
-  }
 
   const element = ({ item }: any) => {
     return (
@@ -27,13 +25,12 @@ export function ItemList(props: any) {
         onPress={() => goDetail(item)}
       >
         <ShortItem item={item} />
-        <TouchableOpacity
-          onPress={() => onPress()}
+        <View
           style={
             styles.bookmark
           }>
           <BookmarkButton />
-        </TouchableOpacity>
+        </View>
       </TouchableOpacity>
     );
   };
@@ -49,4 +46,4 @@ export function ItemList(props: any) {
       />
     </View>
   );
-}
+};
