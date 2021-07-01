@@ -33,7 +33,7 @@ export default function MyAccount(props: Props) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.logo}>
+      <View style={styles.header}>
         <Logo />
       </View>
       <View style={styles.body}>
@@ -45,6 +45,7 @@ export default function MyAccount(props: Props) {
           <LoginForm navigation={props.navigation} />
         }
       </View>
+      <View style={styles.footer} />
     </View>
   );
 }
