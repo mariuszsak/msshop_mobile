@@ -1,20 +1,23 @@
-import React from 'react';
-import { Image } from 'react-native';
-import { DB_HOST, DB_PORT } from '@env';
+import React from "react";
+import { Image } from "react-native";
+import { DB_HOST, DB_PORT } from "@env";
+import styles from "../../styles/style";
 
 interface BigImageNumber {
-    id: number;
+  id: number;
 }
 
-const BigImage = (props: BigImageNumber) => (
+const BigImage = (props: BigImageNumber) => {
+  const id = props.id;
+  return (
     <Image
-        resizeMode="contain"
-        source={{ uri: `http://378d6a5589d6.ngrok.io/img/${props.id}.jpg` }}
-        style={{ width: 330, height: 156, margin:0, padding:0,
-            top:0,
-            left: 0
-        }}
+      resizeMode="contain"
+      source={{
+        uri: `http://${DB_HOST}/img/${id}.jpg`
+      }}
+      style={styles.bigImage}
     />
-);
+  );
+};
 
 export const MemoizedBigImage = React.memo(BigImage);
