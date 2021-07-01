@@ -78,7 +78,7 @@ export default function Filter(props: any) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.logo}>
+      <View style={styles.header}>
         <Logo />
       </View>
       <View style={styles.body}>
@@ -133,6 +133,7 @@ export default function Filter(props: any) {
           />
         </View>
       </View>
+      <View style={styles.footer} />
     </View>
   );
 }
