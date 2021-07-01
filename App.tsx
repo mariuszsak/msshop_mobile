@@ -21,7 +21,7 @@ const App = () => {
   }, []);
 
   return (
-      <DrawerNavigation />
+    <DrawerNavigation />
   );
 };
 
@@ -29,7 +29,7 @@ export default () => {
   return (
     <AppContextProvider>
       <LoginContextProvider>
-        <App />
+          <App />
       </LoginContextProvider>
     </AppContextProvider>
   );
