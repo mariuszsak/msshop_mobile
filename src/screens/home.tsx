@@ -1,12 +1,13 @@
 import React from "react";
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import Logo from "../components/logo";
 import { ItemList } from "../components/ItemList";
 import { useProduct } from "../context/ItemContext";
 import styles from "../styles/style";
+import { NavigationScreenProp } from "react-navigation";
 
 interface Props {
-  navigation: any;
+  navigation: NavigationScreenProp<any> | null;
 }
 
 export default function Home(props: Props) {
