@@ -16,7 +16,9 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 15,
-    backgroundColor: bgcolor
+    backgroundColor: bgcolor,
+    paddingLeft:20,
+    paddingRight:20
     // margin: 10
   },
   footer: {
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     padding: 0
   },
   singleItem: {
-    margin: 5,
+    marginTop: 5,
     borderWidth: 1,
     borderColor: "#d9d9d9",
     borderRadius: 30,
@@ -131,13 +133,13 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: 40,
-    width: 40,
+    height: 50,
+    width: 50,
     position: "absolute",
     borderRadius: 15,
     backgroundColor: "lightgray",
     bottom: -5,
-    right: -5
+    right: 0
   },
   addRemoveContainer: {
     flex: 3
