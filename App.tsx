@@ -4,6 +4,7 @@ import { fetchData } from "./src/services/fetchData";
 import "./src/services/firebase-config";
 import { LoginContextProvider, useLogin } from "./src/context/LoginContext";
 import DrawerNavigation from "./src/components/navigator/DrawerNavigation";
+import { BasketContextProvider } from "./src/context/BasketContext";
 
 const App = () => {
   const { setGlassItems } = useProduct();
@@ -29,7 +30,9 @@ export default () => {
   return (
     <AppContextProvider>
       <LoginContextProvider>
+        <BasketContextProvider>
           <App />
+        </BasketContextProvider>
       </LoginContextProvider>
     </AppContextProvider>
   );
