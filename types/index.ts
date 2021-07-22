@@ -1,6 +1,8 @@
+
 export type ItemButton = {
   title: string;
   onPress: () => void;
+  isEnabled: boolean;
 }
 
 export type GlassBrand = {
@@ -23,6 +25,7 @@ export type GlassItem = {
   brand: GlassBrand;
   gender: GlassGender;
   type: GlassType;
+  isBookmarked: boolean;
 }
 
 export type ProductType = { id: number } & GlassType;
@@ -32,4 +35,14 @@ export type GlassSelections = GlassType | GlassBrand | GlassGender;
 export type UserData = {
   firstName: string;
   email: string;
+}
+
+export type BookmarkedItem = {
+  glassItem: GlassItem;
+  isBookmarked: boolean;
+}
+
+export type BasketItem = {
+  glassItem: GlassItem;
+  quantity: number;
 }
