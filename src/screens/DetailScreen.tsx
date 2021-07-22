@@ -1,10 +1,8 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { MemoizedBigImage } from "../components/image/BigImage";
 import { GlassItem } from "../../types";
-import styles from "../styles/style";
-import ButtonsAddRemoveItem from "../components/buttons/ButtonsAddRemoveItem";
-import ButtonAddToCart from "../components/buttons/ButtonAddToCart";
+import ProductButtonsContainer from "../components/buttons/ProductButtonsContainer";
 import DetailText from "../components/text/DetailText";
 
 interface IProductDetail {
@@ -13,7 +11,7 @@ interface IProductDetail {
   }
 }
 
-const ProductDetail = (props: IProductDetail) => {
+export const DetailScreen = (props: IProductDetail) => {
   const { id, name, description, price, gender, type } = props.route.params;
   return (
     <View style={{
@@ -35,10 +33,36 @@ const ProductDetail = (props: IProductDetail) => {
         <Text>{description}</Text>
       </View>
       <View style={styles.addRemoveContainer}>
-        <ButtonsAddRemoveItem />
+        <ProductButtonsContainer id={id} />
       </View>
     </View>
   );
 };
 
-export default ProductDetail;
+const styles = StyleSheet.create({
+  priceDetail: {
+    paddingBottom: 25,
+    fontWeight: "bold",
+    fontSize: 25,
+    color: "#007AFF"
+  },
+  description: {
+    paddingTop: 5,
+    fontSize: 15,
+    paddingBottom: 20
+  },
+  addRemoveContainer: {
+    flex: 3
+    // position: "absolute",
+    // bottom: 0,
+  },
+  detail: {
+    // borderWidth: 1,
+    borderColor: "red",
+    paddingBottom: 15,
+    // justifyContent: "flex-start",
+    // flexDirection: "column"
+    flex: 2,
+    alignItems: "center"
+  }
+});

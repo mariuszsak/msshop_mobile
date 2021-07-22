@@ -1,4 +1,4 @@
-import { View, Button, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
+import { View, TouchableOpacity, TouchableWithoutFeedback, StyleSheet, StatusBar } from "react-native";
 import React, { useEffect } from "react";
 import Logo from "../components/logo";
 import { useProduct } from "../context/ItemContext";
@@ -6,9 +6,9 @@ import CustomCheckbox from "../components/checkboxes/CustomCheckbox";
 import { fetchData } from "../services/fetchData";
 import { GlassBrand, GlassGender, GlassType } from "../../types";
 import CustomCheckboxHeader from "../components/checkboxes/CustomCheckboxHeader";
-import styles from "../styles/style";
+import ButtonBase from "../components/buttons/ButtonBase";
 
-export default function Filter(props: any) {
+export const FilterScreen = (props: any) => {
 
   const {
     glassItems,
@@ -126,14 +126,55 @@ export default function Filter(props: any) {
             ))}
           </View>
         </View>
-        <View style={styles.btn}>
-          <Button
-            onPress={applyFiltersHandler}
-            title={"Apply filters"}
-          />
-        </View>
+
+      </View>
+      <View style={styles.btn}>
+        <ButtonBase
+          onPress={applyFiltersHandler}
+          title={"Apply filters"}
+          isEnabled={true}
+        />
       </View>
       <View style={styles.footer} />
     </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  //wtf
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight
+  },
+  header: {
+    flex: 2
+  },
+  body: {
+    flex: 15,
+    backgroundColor: '#fff',
+    paddingLeft: 20,
+    paddingRight: 20
+    // margin: 10
+  },
+  footer: {
+    flex: 3,
+    backgroundColor: '#fff'
+  },
+  checkboxes: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "flex-end"
+  },
+  bor: {
+    // flex: 1,
+    // borderStyle: "solid",
+    // borderWidth: 1,
+    // borderColor: "black"
+  },
+  btn: {
+    backgroundColor: '#fff',
+    padding: 10
+    // borderWidth: 1,
+    // borderRadius: 15
+  }
+});

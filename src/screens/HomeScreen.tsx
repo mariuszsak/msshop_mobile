@@ -1,16 +1,15 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
 import Logo from "../components/logo";
 import { ItemList } from "../components/ItemList";
 import { useProduct } from "../context/ItemContext";
-import styles from "../styles/style";
 import { NavigationScreenProp } from "react-navigation";
 
 interface Props {
   navigation: NavigationScreenProp<any> | null;
 }
 
-export default function Home(props: Props) {
+export const HomeScreen = (props: Props) => {
 
   const {
     glassItems,
@@ -47,4 +46,25 @@ export default function Home(props: Props) {
       <Text>Loading</Text>
     </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight
+  },
+  header: {
+    flex: 2
+  },
+  body: {
+    flex: 15,
+    backgroundColor: "#fff",
+    paddingLeft: 20,
+    paddingRight: 20
+    // margin: 10
+  },
+  footer: {
+    flex: 3,
+    backgroundColor: "#fff"
+  }
+});

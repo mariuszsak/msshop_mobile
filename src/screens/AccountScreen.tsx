@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 import React, { useEffect, useState } from "react";
 import Logo from "../components/logo";
 import "firebase/auth";
@@ -6,13 +6,12 @@ import { UserData } from "../../types";
 import axios from "axios";
 import LoginForm from "../components/LoginForm";
 import { useLogin } from "../context/LoginContext";
-import styles from "../styles/style";
 
 interface Props {
   navigation: any;
 }
 
-export default function MyAccount(props: Props) {
+export const AccountScreen = (props: Props) => {
 
   const { token, isLogged } = useLogin();
   const [userData, setUserData] = useState<UserData[]>([]);
@@ -48,4 +47,27 @@ export default function MyAccount(props: Props) {
       <View style={styles.footer} />
     </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  //wtf
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight
+  },
+  header: {
+    flex: 2
+  },
+  body: {
+    flex: 15,
+    backgroundColor: "#fff",
+    paddingLeft: 20,
+    paddingRight: 20
+    // margin: 10
+  },
+  footer: {
+    flex: 3,
+    backgroundColor: "#fff"
+  }
+});
+
