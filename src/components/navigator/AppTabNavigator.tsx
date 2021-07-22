@@ -1,15 +1,15 @@
 import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
-import Info from "../../screens/info";
-import HomeStack from "./homeStack";
-import Basket from "../../screens/basket";
-import Filter from "../../screens/filter";
-import MyAccount from "../../screens/myAccount";
+import { InfoScreen } from "../../screens/InfoScreen";
+import { HomeStack } from "../stack/HomeStack";
+import { BasketScreen } from "../../screens/BasketScreen";
+import { FilterScreen } from "../../screens/FilterScreen";
+import { AccountScreen } from "../../screens/AccountScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Tab = createBottomTabNavigator();
 
-const AppTabNavigator = () => {
+export const AppTabNavigator = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -56,7 +56,7 @@ const AppTabNavigator = () => {
       />
       <Tab.Screen
         name="Basket"
-        component={Basket}
+        component={BasketScreen}
         options={{
           tabBarLabel: "Basket",
           tabBarIcon: ({ color }) => (
@@ -70,7 +70,7 @@ const AppTabNavigator = () => {
       />
       <Tab.Screen
         name="Filter"
-        component={Filter}
+        component={FilterScreen}
         options={{
           tabBarLabel: "Filter",
           tabBarIcon: ({ color }) => (
@@ -84,7 +84,7 @@ const AppTabNavigator = () => {
       />
       <Tab.Screen
         name="My Account"
-        component={MyAccount}
+        component={AccountScreen}
         options={{
           tabBarLabel: "My Account",
           tabBarIcon: ({ color }) => (
@@ -98,7 +98,7 @@ const AppTabNavigator = () => {
       />
       <Tab.Screen
         name="Info"
-        component={Info}
+        component={InfoScreen}
         options={{
           tabBarLabel: "Info",
           tabBarIcon: ({ color }) => (
@@ -113,5 +113,3 @@ const AppTabNavigator = () => {
     </Tab.Navigator>
   );
 };
-
-export default AppTabNavigator;
