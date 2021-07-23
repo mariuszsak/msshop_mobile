@@ -1,12 +1,12 @@
 import { View, TouchableOpacity, TouchableWithoutFeedback, StyleSheet, StatusBar } from "react-native";
 import React, { useEffect } from "react";
-import Logo from "../components/logo";
+import { Logo } from "../components/logo";
 import { useProduct } from "../context/ItemContext";
-import CustomCheckbox from "../components/checkboxes/CustomCheckbox";
+import { CustomCheckbox } from "../components/checkboxes/CustomCheckbox";
 import { fetchData } from "../services/fetchData";
 import { GlassBrand, GlassGender, GlassType } from "../../types";
 import CustomCheckboxHeader from "../components/checkboxes/CustomCheckboxHeader";
-import ButtonBase from "../components/buttons/ButtonBase";
+import { ButtonBase } from "../components/buttons/ButtonBase";
 
 export const FilterScreen = (props: any) => {
 
@@ -23,24 +23,6 @@ export const FilterScreen = (props: any) => {
     setIsFiltered,
     setFilteredGlassItems
   } = useProduct();
-
-  const setDataToState = () => {
-    fetchData("types").then(data => {
-      setGlassItemsByType(data);
-    });
-
-    fetchData("gender").then(data => {
-      setGlassItemsByGender(data);
-    });
-
-    fetchData("brands").then(data => {
-      setGlassItemsByBrand(data);
-    });
-  };
-
-  useEffect(() => {
-    setDataToState();
-  }, []);
 
   function applyFiltersHandler(): void {
 

@@ -1,9 +1,9 @@
 import { StatusBar, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Logo from "../components/logo";
+import { Logo } from "../components/logo";
 import { useBasket } from "../context/BasketContext";
 import { BasketList } from "../components/BasketList";
-import ButtonBase from "../components/buttons/ButtonBase";
+import { ButtonBase } from "../components/buttons/ButtonBase";
 
 export const BasketScreen = () => {
   const { currentBasket } = useBasket();

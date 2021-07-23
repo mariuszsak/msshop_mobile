@@ -1,8 +1,8 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 import React from "react";
 import { MemoizedBigImage } from "../components/image/BigImage";
 import { GlassItem } from "../../types";
-import ProductButtonsContainer from "../components/buttons/ProductButtonsContainer";
+import { ProductButtonsContainer } from "../components/buttons/ProductButtonsContainer";
 import DetailText from "../components/text/DetailText";
 
 interface IProductDetail {
@@ -14,17 +14,11 @@ interface IProductDetail {
 export const DetailScreen = (props: IProductDetail) => {
   const { id, name, description, price, gender, type } = props.route.params;
   return (
-    <View style={{
-      flex: 1,
-      backgroundColor: "#fff",
-      borderStyle: "solid",
-      flexDirection: "column"
-
-    }}>
+    <View style={styles.container}>
       <View style={styles.detail}>
         <MemoizedBigImage id={id} />
       </View>
-      <View style={{ flex: 3, padding: 10 }}>
+      <View style={styles.infoContainer}>
         <DetailText>
           <Text>{name}</Text>
         </DetailText>
@@ -40,6 +34,13 @@ export const DetailScreen = (props: IProductDetail) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+    // backgroundColor: ''
+  },
+  infoContainer: {
+    flex: 4, padding: 10
+  },
   priceDetail: {
     paddingBottom: 25,
     fontWeight: "bold",

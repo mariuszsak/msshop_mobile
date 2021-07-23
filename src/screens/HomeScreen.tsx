@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBar, StyleSheet, Text, View } from "react-native";
-import Logo from "../components/logo";
+import { Logo } from "../components/logo";
 import { ItemList } from "../components/ItemList";
 import { useProduct } from "../context/ItemContext";
 import { NavigationScreenProp } from "react-navigation";
