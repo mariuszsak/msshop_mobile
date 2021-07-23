@@ -15,7 +15,7 @@ export const HomeStack = () => {
         }}
       />
       <Stack.Screen
-        name="ProductDetail"
+        name="DetailScreen"
         component={DetailScreen}
         options={{
           title: "Details:"
