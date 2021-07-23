@@ -1,8 +1,8 @@
 import React from "react";
-import { Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { useFonts } from "expo-font";
 
-const DetailText = (props: any) => {
+export const DetailText = (props: any) => {
   const [loaded] = useFonts({
     "Roboto": require("../../../assets/Roboto-BlackItalic.ttf"),
     "RobotoSlab": require("../../../assets/RobotoSlab-Regular.ttf"),
@@ -13,16 +13,17 @@ const DetailText = (props: any) => {
     return null;
   } else {
     return (
-      <Text style={{
-        fontFamily: "RobotoSlab",
-        fontWeight: "normal",
-        fontSize: 24
-      }}
-      >
+      <Text style={styles.detailText}>
         {props.children}
       </Text>
     );
   }
 };
 
-export default DetailText;
+const styles = StyleSheet.create({
+  detailText: {
+    fontFamily: "RobotoSlab",
+    fontWeight: "normal",
+    fontSize: 24
+  }
+});
