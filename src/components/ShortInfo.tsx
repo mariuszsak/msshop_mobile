@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Text, View } from "react-native";
 import styles from "../styles/style";
 
@@ -9,7 +9,7 @@ interface ShortInfoProps {
   type: string
 }
 
-const ShortInfo = (props: ShortInfoProps) => {
+export const ShortInfo = memo((props: ShortInfoProps) => {
   const {name, price, brand, type} = props;
   return (
     <>
@@ -28,6 +28,4 @@ const ShortInfo = (props: ShortInfoProps) => {
       </View>
     </>
   );
-};
-
-export const MemoizedShortInfo = React.memo(ShortInfo);
+});

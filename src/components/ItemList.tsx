@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import { DetailScreen } from "../screens/DetailScreen";
-import BookmarkButton from "./bookmark/BookmarkButton";
+import { BookmarkButton } from "./bookmark/BookmarkButton";
 import { ShortItem } from "./item/ShortItem";
 import { BookmarkedItem } from "../../types";
 
@@ -22,7 +22,7 @@ export const ItemList = (props: BookmarkedItem[] | any) => {
         style={styles.singleItem}
         onPress={() => goDetail(item)}
       >
-        <View style={{width: '70%'}}>
+        <View style={styles.shortWidth}>
           <ShortItem item={item} />
         </View>
         <View
@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
   allItems: {
     margin: 0,
     padding: 0
+  },
+  shortWidth: {
+    width: '70%'
   },
   bookmark: {
     display: "flex",
