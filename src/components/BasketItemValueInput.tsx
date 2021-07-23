@@ -1,8 +1,7 @@
 import React from "react";
-import { TextInput } from "react-native";
-import styles from "../styles/style";
+import { StyleSheet, TextInput } from "react-native";
 
-const ItemInput = (props: { val: number }) => {
+export const BasketItemValueInput = (props: { val: number }) => {
   const handleItemQuantity = () => {
     console.log("quantity");
   };
@@ -18,4 +17,9 @@ const ItemInput = (props: { val: number }) => {
   );
 };
 
-export default ItemInput;
+const styles = StyleSheet.create({
+  numberInput: {
+    textAlign: "center",
+    color: "#000"
+  }
+});

@@ -1,13 +1,20 @@
 import React from "react";
-import { FlatList, Text, View } from "react-native";
-import styles from "../styles/style";
+import { FlatList, StyleSheet, View } from "react-native";
+import { ShortItem } from "./item/ShortItem";
+import { ProductButtonsContainer } from "./buttons/ProductButtonsContainer";
 
 export const BasketList = (props: any) => {
 
   const element = ({ item }: any) => {
-    console.log(item);
     return (
-      <Text> {item.glassItem.name + `, quantity: ` + item.quantity + `\n`}  </Text>
+      <View style={styles.something1}>
+        <View style={styles.directionStyle}>
+          <ShortItem item={item.glassItem} />
+          <View style={styles.something2}>
+            <ProductButtonsContainer id={item.glassItem.id} />
+          </View>
+        </View>
+      </View>
     );
   };
 
@@ -22,3 +29,22 @@ export const BasketList = (props: any) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  allItems: {
+    margin: 0,
+    padding: 0
+  },
+  something1: {
+    borderColor: "blue",
+    borderWidth: 1,
+    borderRadius: 20
+  },
+  something2: {
+    borderColor: "red",
+    borderWidth: 1
+  },
+  directionStyle: {
+    flexDirection: "row"
+  }
+});
