@@ -1,19 +1,15 @@
 import React, { useState } from "react";
-import { Button, TextInput, View, Text } from "react-native";
+import { Button, TextInput, View, Text, StyleSheet } from "react-native";
 import firebase from "firebase";
 import { useLogin } from "../context/LoginContext";
-import styles from "../styles/style";
 
-const LoginForm = (props: { navigation: { navigate: any; }; }) => {
+export const LoginForm = (props: { navigation: { navigate: any; }; }) => {
 
   const { navigate } = props.navigation;
   const { isLogged, setIsLogged, setToken } = useLogin();
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
 
-  // useEffect(() => {
-  //
-  // },[email, password]);
 
   function login(val1: string, val2: string) {
     firebase
@@ -67,4 +63,16 @@ const LoginForm = (props: { navigation: { navigate: any; }; }) => {
   );
 };
 
-export default LoginForm;
+const styles = StyleSheet.create({
+  btn: {
+    backgroundColor: "#fff",
+    padding: 10
+    // borderWidth: 1,
+    // borderRadius: 15
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1
+  }
+});
