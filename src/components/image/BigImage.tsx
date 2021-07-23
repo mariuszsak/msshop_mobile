@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Image } from "react-native";
 import { DB_HOST, DB_PORT } from "@env";
 import styles from "../../styles/style";
@@ -7,7 +7,7 @@ interface BigImageNumber {
   id: number;
 }
 
-const BigImage = (props: BigImageNumber) => {
+export const BigImage = memo((props: BigImageNumber) => {
   const id = props.id;
   return (
     <Image
@@ -18,6 +18,4 @@ const BigImage = (props: BigImageNumber) => {
       style={styles.bigImage}
     />
   );
-};
-
-export const MemoizedBigImage = React.memo(BigImage);
+});

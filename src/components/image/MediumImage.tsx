@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Image } from "react-native";
 import { DB_HOST, DB_PORT } from "@env";
 import styles from "../../styles/style";
@@ -7,7 +7,7 @@ interface MediumImageProps {
   id: number;
 }
 
-const MediumImage = (props: MediumImageProps) => {
+export const MediumImage = memo((props: MediumImageProps) => {
   const id = props.id;
   return (
     <Image
@@ -18,6 +18,4 @@ const MediumImage = (props: MediumImageProps) => {
       style={styles.mediumImage}
     />
   );
-};
-
-export const MemoizedMediumImage = React.memo(MediumImage);
+});
