@@ -1,6 +1,6 @@
 import { View, TouchableOpacity, TouchableWithoutFeedback, StyleSheet, StatusBar } from "react-native";
 import React, { useEffect } from "react";
-import { Logo } from "../components/logo";
+import { Logo } from "../components/Logo";
 import { useProduct } from "../context/ItemContext";
 import { CustomCheckbox } from "../components/checkboxes/CustomCheckbox";
 import { fetchData } from "../services/fetchData";

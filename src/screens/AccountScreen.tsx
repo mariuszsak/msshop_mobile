@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, StatusBar } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Logo } from "../components/logo";
+import { Logo } from "../components/Logo";
 import "firebase/auth";
 import { UserData } from "../../types";
 import axios from "axios";

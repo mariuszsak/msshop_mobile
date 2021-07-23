@@ -1,6 +1,6 @@
 import { View, StyleSheet, StatusBar } from "react-native";
 import React from "react";
-import { Logo } from "../components/logo";
+import { Logo } from "../components/Logo";
 import MapView, { Marker } from "react-native-maps";
 
 
