@@ -1,11 +1,10 @@
-import { View, TouchableOpacity, TouchableWithoutFeedback, StyleSheet, StatusBar } from "react-native";
-import React, { useEffect } from "react";
+import { View, TouchableOpacity, StyleSheet, StatusBar } from "react-native";
+import React from "react";
 import { Logo } from "../components/Logo";
 import { useProduct } from "../context/ItemContext";
 import { CustomCheckbox } from "../components/checkboxes/CustomCheckbox";
-import { fetchData } from "../services/fetchData";
 import { GlassBrand, GlassGender, GlassType } from "../../types";
-import CustomCheckboxHeader from "../components/checkboxes/CustomCheckboxHeader";
+import { CustomCheckboxHeader } from "../components/checkboxes/CustomCheckboxHeader";
 import { ButtonBase } from "../components/buttons/ButtonBase";
 
 export const FilterScreen = (props: any) => {
@@ -13,11 +12,8 @@ export const FilterScreen = (props: any) => {
   const {
     glassItems,
     glassItemsByType,
-    setGlassItemsByType,
     glassItemsByGender,
-    setGlassItemsByGender,
     glassItemsByBrand,
-    setGlassItemsByBrand,
     selectedGlasses,
     setSelectedGlasses,
     setIsFiltered,
@@ -98,13 +94,13 @@ export const FilterScreen = (props: any) => {
           <CustomCheckboxHeader text="Show glasses by brand:" />
           <View style={styles.checkboxes}>
             {glassItemsByBrand.map((item: GlassBrand, index: number) => (
-              <TouchableWithoutFeedback
+              <TouchableOpacity
                 key={index}
                 onPress={() => handleBrandClick(item.brand_name)}
                 style={styles.bor}
               >
                 <CustomCheckbox item={item} index={index} name={item.brand_name} />
-              </TouchableWithoutFeedback>
+              </TouchableOpacity>
             ))}
           </View>
         </View>
@@ -123,7 +119,6 @@ export const FilterScreen = (props: any) => {
 };
 
 const styles = StyleSheet.create({
-  //wtf
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight
@@ -133,30 +128,28 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 15,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     paddingLeft: 20,
     paddingRight: 20
-    // margin: 10
   },
   footer: {
     flex: 3,
-    backgroundColor: '#fff'
+    backgroundColor: "#fff"
   },
   checkboxes: {
     flexDirection: "row",
     justifyContent: "space-around",
-    alignItems: "flex-end"
+    alignItems: "flex-end",
+    marginBottom: 20
   },
   bor: {
-    // flex: 1,
-    // borderStyle: "solid",
-    // borderWidth: 1,
-    // borderColor: "black"
+    marginTop: 10,
+    marginBottom: 10,
+    flexDirection: "column",
+    alignItems: "center"
   },
   btn: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 10
-    // borderWidth: 1,
-    // borderRadius: 15
   }
 });
