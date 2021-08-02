@@ -1,7 +1,6 @@
 import React, { memo } from "react";
-import { Image } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import { DB_HOST, DB_PORT } from "@env";
-import styles from "../../styles/style";
 
 interface MediumImageProps {
   id: number;
@@ -18,4 +17,12 @@ export const MediumImage = memo((props: MediumImageProps) => {
       style={styles.mediumImage}
     />
   );
+});
+
+const styles = StyleSheet.create({
+  mediumImage: {
+    margin: 5,
+    width: 150,
+    height: 55
+  }
 });

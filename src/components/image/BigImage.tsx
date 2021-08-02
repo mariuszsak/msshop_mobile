@@ -1,7 +1,6 @@
 import React, { memo } from "react";
-import { Image } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import { DB_HOST, DB_PORT } from "@env";
-import styles from "../../styles/style";
 
 interface BigImageNumber {
   id: number;
@@ -18,4 +17,15 @@ export const BigImage = memo((props: BigImageNumber) => {
       style={styles.bigImage}
     />
   );
+});
+
+const styles = StyleSheet.create({
+  bigImage: {
+    width: 330,
+    height: 156,
+    margin: 0,
+    padding: 0,
+    top: 0,
+    left: 0
+  }
 });
