@@ -7,14 +7,31 @@ import { DrawerNavigation } from "./src/components/navigator/DrawerNavigation";
 import { BasketContextProvider } from "./src/context/BasketContext";
 
 const App = () => {
-  const { setGlassItems } = useProduct();
+  const { setGlassItems, setGlassItemsByType, setGlassItemsByGender, setGlassItemsByBrand } = useProduct();
   const { token } = useLogin();
 
   const handleFetchData = () => {
     fetchData("products", token)
       .then(response => {
         setGlassItems(response);
-      });
+      }).catch(e => {
+      console.log(e);
+    });
+    fetchData("types").then(response => {
+      setGlassItemsByType(response);
+    }).catch(e => {
+      console.log(e);
+    });
+    fetchData("gender").then(response => {
+      setGlassItemsByGender(response);
+    }).catch(e => {
+      console.log(e);
+    });
+    fetchData("brands").then(response => {
+      setGlassItemsByBrand(response);
+    }).catch(e => {
+      console.log(e);
+    });
   };
 
   useEffect(() => {
