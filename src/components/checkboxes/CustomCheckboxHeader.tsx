@@ -1,13 +1,18 @@
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const CustomCheckboxHeader = ({ text }: any) => {
+export const CustomCheckboxHeader = ({ text }: any) => {
 
   return (
     <View>
-      <Text>{text}</Text>
+      <Text  style={styles.text}>{text}</Text>
     </View>
   );
 };
 
-export default CustomCheckboxHeader;
+const styles = StyleSheet.create({
+    text: {
+      fontWeight: "bold"
+    }
+  }
+);
