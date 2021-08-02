@@ -1,17 +1,30 @@
-import React from "react";
-import { Button, View } from "react-native";
+import React  from "react";
+import { Button, StyleSheet, View } from "react-native";
 import { ItemButton } from "../../../types";
-import style from "../../styles/style";
 
-const ButtonBase = (props: ItemButton) => {
+export const ButtonBase = ({ isEnabled, title, onPress }: ItemButton) => {
   return (
-    <View style={style.btn}>
-      <Button
-        title={props.title}
-        onPress={props.onPress}
-      />
+    <View style={styles.btn}>
+      {isEnabled ?
+        <Button
+          title={title}
+          onPress={onPress}
+        />
+        :
+        <Button
+          title={title}
+          onPress={onPress}
+          disabled={true}
+        />}
     </View>
   );
 };
 
-export default ButtonBase;
+
+const styles = StyleSheet.create({
+  btn: {
+    backgroundColor: "#fff",
+    padding: 10
+  }
+});
+

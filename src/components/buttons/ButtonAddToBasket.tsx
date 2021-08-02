@@ -1,35 +1,30 @@
 import React from "react";
-import ButtonBase from "./ButtonBase";
+import { ButtonBase } from "./ButtonBase";
 import { useBasket } from "../../context/BasketContext";
 import { useProduct } from "../../context/ItemContext";
 import { GlassItem } from "../../../types";
 
-const ButtonAddToCart = (props: { id: number, quantity: number }) => {
+export const ButtonAddToBasket = (props: { id: number, quantity: number }) => {
 
   const { glassItems } = useProduct();
-  const { setCurrentBasket } = useBasket();
-  const handleAddToCart = () => {
+  const { currentBasket, setCurrentBasket } = useBasket();
+
+  const handleAddToBasket = () => {
     const currentItem = glassItems.find(item => item.id == props.id) as GlassItem;
     const item: { quantity: number; glassItem: GlassItem } = {
       glassItem: currentItem,
       quantity: props.quantity
     };
-    setCurrentBasket(prevBasket => [...prevBasket, item]);
+    if (!currentBasket.find(e => e.glassItem == currentItem)) {
+      setCurrentBasket(prevBasket => [...prevBasket, item]);
+    }
   };
 
   return (
-      props.quantity > 0 ?
-        <ButtonBase
-          title="Add To Basket"
-          onPress={handleAddToCart}
-        />
-        :
-        <ButtonBase
-          title="Basket is empty"
-          onPress={() => {}}
-          isEnabled={false}
-        />
+    <ButtonBase
+      title="Add To Basket"
+      onPress={handleAddToBasket}
+      isEnabled={true}
+    />
   );
 };
-
-export default ButtonAddToCart;
