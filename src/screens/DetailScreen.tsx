@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, StatusBar } from "react-native";
 import React from "react";
-import { MemoizedBigImage } from "../components/image/BigImage";
+import { BigImage } from "../components/image/BigImage";
 import { GlassItem } from "../../types";
 import { ProductButtonsContainer } from "../components/buttons/ProductButtonsContainer";
-import DetailText from "../components/text/DetailText";
+import { DetailText } from "../components/text/DetailText";
 
 interface IProductDetail {
   route: {
@@ -16,7 +16,7 @@ export const DetailScreen = (props: IProductDetail) => {
   return (
     <View style={styles.container}>
       <View style={styles.detail}>
-        <MemoizedBigImage id={id} />
+        <BigImage id={id} />
       </View>
       <View style={styles.infoContainer}>
         <DetailText>
@@ -36,10 +36,10 @@ export const DetailScreen = (props: IProductDetail) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-    // backgroundColor: ''
   },
   infoContainer: {
-    flex: 4, padding: 10
+    flex: 3,
+    padding: 10
   },
   priceDetail: {
     paddingBottom: 25,
@@ -54,15 +54,10 @@ const styles = StyleSheet.create({
   },
   addRemoveContainer: {
     flex: 3
-    // position: "absolute",
-    // bottom: 0,
   },
   detail: {
-    // borderWidth: 1,
     borderColor: "red",
     paddingBottom: 15,
-    // justifyContent: "flex-start",
-    // flexDirection: "column"
     flex: 2,
     alignItems: "center"
   }
