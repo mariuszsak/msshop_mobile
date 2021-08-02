@@ -1,25 +1,19 @@
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
-interface IBookmarkButton {
-  isBookmarked: boolean;
-}
 
-const BookmarkButton = () => {
+export const BookmarkButton = () => {
 
-  const [isBmk, setIsBmk] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
 
   return (
     <TouchableOpacity onPress={() => {
-      setIsBmk(!isBmk);
+      setIsBookmarked(!isBookmarked);
     }}>
       <Text>
-        <Icon name="bookmark" size={22} color={isBmk ? "red" : "white"} />
+        <Icon name="bookmark" size={42} color={isBookmarked ? "red" : "white"} />
       </Text>
     </TouchableOpacity>
-
   );
 };
-
-export default BookmarkButton;
