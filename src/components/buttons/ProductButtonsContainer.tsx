@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import ButtonBase from "./ButtonBase";
-import BasketItemValueInput from "../BasketItemValueInput";
-import { View } from "react-native";
-import ButtonAddToBasket from "./ButtonAddToBasket";
+import { ButtonBase } from "./ButtonBase";
+import { BasketItemValueInput } from "../BasketItemValueInput";
+import { StyleSheet, View } from "react-native";
+import { ButtonAddToBasket } from "./ButtonAddToBasket";
 
-const BasketButtonsContainer = (props: { id: number; }) => {
+export const ProductButtonsContainer = (props: { id: number; }) => {
 
   const [basketVal, setBasketVal] = useState(1);
-
 
   const handleAddItem = () => {
     setBasketVal(basketVal + 1);
@@ -18,22 +17,33 @@ const BasketButtonsContainer = (props: { id: number; }) => {
   };
 
   return (
-    <View style={{ flexDirection: "row", justifyContent: "flex-end", right: 10 }}>
-      <ButtonBase
-        title="-"
-        onPress={handleRemoveItem}
-      />
-      <BasketItemValueInput val={basketVal} />
-      <ButtonBase
-        title="+"
-        onPress={handleAddItem}
-      />
-      <ButtonAddToBasket
-        id={props.id}
-        quantity={basketVal}
-      />
+    <View>
+      <View style={styles.rowContainer}>
+        <ButtonBase
+          title="-"
+          onPress={handleRemoveItem}
+          isEnabled={basketVal >= 2}
+        />
+        <BasketItemValueInput val={basketVal} />
+        <ButtonBase
+          title="+"
+          onPress={handleAddItem}
+          isEnabled={true}
+        />
+      </View>
+      <View>
+        <ButtonAddToBasket
+          quantity={basketVal}
+          id={props.id}
+        />
+      </View>
     </View>
   );
 };
 
-export default BasketButtonsContainer;
+const styles = StyleSheet.create({
+  rowContainer: {
+    flexDirection: "row",
+    justifyContent: "center"
+  }
+});

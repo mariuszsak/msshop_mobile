@@ -5,12 +5,11 @@ import styles from "../styles/style";
 interface ShortInfoProps {
   name: string;
   price: string;
-  brand: string;
   type: string
 }
 
 export const ShortInfo = memo((props: ShortInfoProps) => {
-  const {name, price, brand, type} = props;
+  const {name, price, type} = props;
   return (
     <>
       <View>
