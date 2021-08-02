@@ -1,17 +1,20 @@
 import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, ListRenderItemInfo, StyleSheet, View } from "react-native";
 import { ShortItem } from "./item/ShortItem";
-import { ProductButtonsContainer } from "./buttons/ProductButtonsContainer";
+import { BasketButtonsContainer } from "./buttons/BasketButtonsContainer";
+import { BasketItem } from "../../types";
 
 export const BasketList = (props: any) => {
 
-  const element = ({ item }: any) => {
+  const element = (props: ListRenderItemInfo<BasketItem>) => {
     return (
       <View style={styles.something1}>
         <View style={styles.directionStyle}>
-          <ShortItem item={item.glassItem} />
+          <ShortItem item={props.item.glassItem} />
           <View style={styles.something2}>
-            <ProductButtonsContainer id={item.glassItem.id} />
+            <BasketButtonsContainer
+              {...props.item}
+            />
           </View>
         </View>
       </View>
