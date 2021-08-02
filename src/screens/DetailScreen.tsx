@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { BigImage } from "../components/image/BigImage";
 import { GlassItem } from "../../types";
@@ -35,7 +35,8 @@ export const DetailScreen = (props: IProductDetail) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#fff'
   },
   infoContainer: {
     flex: 3,
