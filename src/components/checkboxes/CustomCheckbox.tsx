@@ -1,24 +1,13 @@
 import React from "react";
 import { Checkbox } from "react-native-paper";
-import styles from "../../styles/style";
 import { useProduct } from "../../context/ItemContext";
 import { Text } from "react-native";
 
-const CustomCheckbox = (props: any) => {
-  // <Checkbox.Item {...props} labelStyle={styles.checkboxLabel} />
+export const CustomCheckbox = (props: any) => {
 
   const {
-    glassItems,
-    glassItemsByType,
-    setGlassItemsByType,
-    glassItemsByGender,
-    setGlassItemsByGender,
-    glassItemsByBrand,
-    setGlassItemsByBrand,
     selectedGlasses,
-    setSelectedGlasses,
-    filteredGlassItems,
-    setFilteredGlassItems
+    setSelectedGlasses
   } = useProduct();
 
   return (
@@ -32,12 +21,8 @@ const CustomCheckbox = (props: any) => {
             return setSelectedGlasses(selectedGlasses.filter(i => i !== props.item));
           }
           return setSelectedGlasses([...selectedGlasses, props.item]);
-
-
         }}
       />
     </>
   );
 };
-
-export default CustomCheckbox;
