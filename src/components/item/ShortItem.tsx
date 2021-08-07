@@ -22,7 +22,6 @@ export const ShortItem = ({ item }: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
     margin: 10
   },
   imageContainer: {
