@@ -33,42 +33,50 @@ export const LoginForm = (props: { navigation: { navigate: any; }; }) => {
   };
 
   return (
-    <View>
-      <View>
-        <Text>Type your login: </Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={handleEmailChange}
-          value={email}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
+    <View style={styles.container}>
+      <View style={styles.body}>
+        <View>
+          <Text>Type your login: </Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={handleEmailChange}
+            value={email}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </View>
+        <View>
+          <Text>Type your password:</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={setPassword}
+            value={password}
+            autoCapitalize="none"
+          />
+        </View>
       </View>
       <View>
-        <Text>Type your password:</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setPassword}
-          value={password}
-          autoCapitalize="none"
-        />
-      </View>
-      <View style={styles.btn}>
-        <Button
-          title={"LOGIN"}
-          onPress={() => login(email, password)}
-        />
+        <View style={styles.btn}>
+          <Button
+            title={"LOGIN"}
+            onPress={() => login(email, password)}
+          />
+        </View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 15
+  },
+  body: {
+    backgroundColor: "#fff"
+  },
   btn: {
     backgroundColor: "#fff",
     padding: 10
-    // borderWidth: 1,
-    // borderRadius: 15
   },
   input: {
     height: 40,

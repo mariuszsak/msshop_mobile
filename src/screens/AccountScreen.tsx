@@ -50,7 +50,6 @@ export const AccountScreen = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
-  //wtf
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight
@@ -63,7 +62,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingLeft: 20,
     paddingRight: 20
-    // margin: 10
   },
   footer: {
     flex: 3,
