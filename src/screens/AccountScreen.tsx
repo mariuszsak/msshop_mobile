@@ -6,6 +6,7 @@ import { UserData } from "../../types";
 import axios from "axios";
 import { LoginForm } from "../components/LoginForm";
 import { useLogin } from "../context/LoginContext";
+import { CustomTextHeader } from "../components/checkboxes/CustomTextHeader";
 
 interface Props {
   navigation: any;
@@ -36,7 +37,7 @@ export const AccountScreen = (props: Props) => {
         <Logo />
       </View>
       <View style={styles.body}>
-        <Text>My account</Text>
+        <CustomTextHeader text="My account:" />
         {isLogged
           ?
           <Text>You are logged in</Text>

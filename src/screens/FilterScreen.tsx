@@ -4,7 +4,7 @@ import { Logo } from "../components/Logo";
 import { useProduct } from "../context/ItemContext";
 import { CustomCheckbox } from "../components/checkboxes/CustomCheckbox";
 import { GlassBrand, GlassGender, GlassType } from "../../types";
-import { CustomCheckboxHeader } from "../components/checkboxes/CustomCheckboxHeader";
+import { CustomTextHeader } from "../components/checkboxes/CustomTextHeader";
 import { ButtonBase } from "../components/buttons/ButtonBase";
 
 export const FilterScreen = (props: any) => {
@@ -61,7 +61,7 @@ export const FilterScreen = (props: any) => {
       </View>
       <View style={styles.body}>
         <View>
-          <CustomCheckboxHeader text="Show glasses by type:" />
+          <CustomTextHeader text="Show glasses by type:" />
           <View style={styles.checkboxes}>
             {glassItemsByType.map((item: GlassType, index: number) => (
               <TouchableOpacity
@@ -76,7 +76,7 @@ export const FilterScreen = (props: any) => {
         </View>
 
         <View>
-          <CustomCheckboxHeader text="Show glasses by gender:" />
+          <CustomTextHeader text="Show glasses by gender:" />
           <View style={styles.checkboxes}>
             {glassItemsByGender.map((item: GlassGender, index: number) => (
               <TouchableOpacity
@@ -91,7 +91,7 @@ export const FilterScreen = (props: any) => {
         </View>
 
         <View>
-          <CustomCheckboxHeader text="Show glasses by brand:" />
+          <CustomTextHeader text="Show glasses by brand:" />
           <View style={styles.checkboxes}>
             {glassItemsByBrand.map((item: GlassBrand, index: number) => (
               <TouchableOpacity
