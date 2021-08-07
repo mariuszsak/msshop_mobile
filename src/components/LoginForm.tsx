@@ -36,21 +36,21 @@ export const LoginForm = (props: { navigation: { navigate: any; }; }) => {
     <View style={styles.container}>
       <View style={styles.body}>
         <View>
-          <Text>Type your login: </Text>
           <TextInput
             style={styles.input}
             onChangeText={handleEmailChange}
             value={email}
+            placeholder={'Type your login'}
             keyboardType="email-address"
             autoCapitalize="none"
           />
         </View>
         <View>
-          <Text>Type your password:</Text>
           <TextInput
             style={styles.input}
             onChangeText={setPassword}
             value={password}
+            placeholder={'Type your password'}
             autoCapitalize="none"
           />
         </View>
