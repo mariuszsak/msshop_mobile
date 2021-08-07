@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@expo/ngrok": "^2.5.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@react-native-community/eslint-plugin": "^1.1.0",
     "@types/jest": "^26.0.23",
