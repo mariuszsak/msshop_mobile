@@ -9,7 +9,7 @@ export const ShortItem = ({ item }: any) => {
       <View style={styles.imageContainer}>
         <MediumImage id={item.id} />
       </View>
-      <View style={styles.dataContainer}>
+      <View>
         <ShortInfo
           name={item.brand.brand_name}
           price={item.price}
@@ -22,15 +22,11 @@ export const ShortItem = ({ item }: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 5,
-    padding: 3
+    width: '100%',
+    margin: 10
   },
   imageContainer: {
-    borderWidth: 0,
-    borderColor: "red"
-  },
-  dataContainer: {
-    borderWidth: 0,
-    borderColor: "green"
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
